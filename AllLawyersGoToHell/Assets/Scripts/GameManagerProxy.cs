@@ -12,7 +12,14 @@ public class GameManagerProxy : MonoBehaviour
     {
         GameManager.Instance.LoadScene(sceneName);
     }
-    public void QuitGame()
+
+	public void LoadPlayScene(int judgedInduvidual)
+	{
+		GameManager.Instance.currentPerson = judgedInduvidual;
+		GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel("PlayScene");
+	}
+
+	public void QuitGame()
     {
         GameManager.Instance.QuitGame();
     }
