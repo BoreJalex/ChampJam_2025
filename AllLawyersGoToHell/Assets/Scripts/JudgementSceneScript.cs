@@ -63,11 +63,13 @@ public class JudgementSceneScript : MonoBehaviour
 
 		if (GameManager.Instance.currentPoints > 0)
 		{
-			_rotatingPart.GetComponent<Animator>().SetTrigger("TurnLeft");
+
 		}
 		else
 		{
-			_rotatingPart.GetComponent<Animator>().SetTrigger("TurnRight");
+
 		}
+
+
 	}
 }
