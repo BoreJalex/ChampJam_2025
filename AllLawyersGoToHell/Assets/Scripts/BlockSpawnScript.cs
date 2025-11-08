@@ -99,7 +99,7 @@ public class BoxScript : MonoBehaviour
 		// Falling
 		transform.position = transform.position - new Vector3(0, _fallSpeed, 0) * Time.deltaTime;
 
-		if (transform.position.y <= -7)
+		if (transform.position.y <= -6.0f)
 			Destroy(gameObject);
 
 		// Visuals
