@@ -34,6 +34,7 @@ public class JudgementSceneScript : MonoBehaviour
 	[SerializeField] private GameObject _theCircle; 
 	[SerializeField] private Sprite[] possibleSprites;
 	[SerializeField] private Sprite[] circleSprites;
+	[SerializeField] private Sprite[] soulWeightSprites;
 
 
 	private void Start()
@@ -85,28 +86,35 @@ public class JudgementSceneScript : MonoBehaviour
 				case -40:
 					GameObject VeryEvil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					VeryEvil.transform.localScale *= 2;
-					break;
+                    VeryEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case -20:
 					GameObject QuiteEvil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					QuiteEvil.transform.localScale *= 1.5f;
-					break;
+                    QuiteEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case -10:
 					GameObject Evil = Instantiate(evilSquare, randomRight, Quaternion.identity);
-					break;
+                    Evil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case 5:
 					GameObject Good = Instantiate(goodSquare, randomLeft, Quaternion.identity);
+					Good.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
 					break;
 				case 10:
 					GameObject Great = Instantiate(goodSquare, randomLeft, Quaternion.identity);
 					Great.transform.localScale *= 1.5f;
-					break;
+                    Great.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case 50:
 					GameObject ShouldBeGood = Instantiate(goodSquare, randomRight, Quaternion.identity);
-					break;
+                    ShouldBeGood.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case 100:
 					GameObject ShouldBeGreat = Instantiate(goodSquare, randomRight, Quaternion.identity);
 					ShouldBeGreat.transform.localScale *= 1.5f;
-					break;
+                    ShouldBeGreat.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 			}
 
 			_thingsSpawned++;
