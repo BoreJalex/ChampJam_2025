@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
             optionsScreen = GameObject.Find("OptionsMenu");
             mainScreen = GameObject.Find("StartScreen");
-            optionsScreen.SetActive(false);
+            if(optionsScreen != null)
+                optionsScreen.SetActive(false);
             DontDestroyOnLoad(gameObject);
         }
         else

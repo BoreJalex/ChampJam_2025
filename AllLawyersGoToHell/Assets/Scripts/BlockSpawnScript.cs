@@ -22,11 +22,11 @@ public class BlockSpawnScript : MonoBehaviour
 
 	// Text tracking
 	private int textsUsed = 0;
-	public bool allTextsUsed = false;
+	[HideInInspector] public bool allTextsUsed = false;
 
     private void Start()
 	{
-		boxFallSpeed = boxFallSpeed * GameManager.Instance.speedMultiplier;
+		boxFallSpeed *= GameManager.Instance.speedMultiplier;
 	}
 
 	private void Update()
