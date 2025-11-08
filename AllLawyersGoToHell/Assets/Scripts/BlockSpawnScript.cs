@@ -62,9 +62,16 @@ public class BoxScript : MonoBehaviour
 
 	private void Update()
 	{
+		// Falling
 		transform.position = transform.position - new Vector3(0, _fallSpeed, 0) * Time.deltaTime;
 
 		if (transform.position.y <= -7)
 			Destroy(gameObject);
+
+		// Visuals
+		if (_pScript.currentBox != null && _pScript.currentBox == gameObject)
+			GetComponent<SpriteRenderer>().color = Color.red;
+		else
+			GetComponent<SpriteRenderer>().color = Color.white;
 	}
 }
