@@ -23,10 +23,15 @@ public class BlockSpawnScript : MonoBehaviour
 	// Text tracking
 	private int _currentChoice = 0;
 	private int _textsUsed = 0;
-	public int currentTexts = 0;
+	[HideInInspector] public int currentTexts = 0;
 	[HideInInspector] public bool allTextsUsed = false;
 
-    private void Start()
+	// Sprite Tracking
+	[SerializeField] private Sprite defaultSprite;
+	[SerializeField] private Sprite talkingSprite;
+	private Coroutine resetCo = null;
+
+	private void Start()
 	{
 		if (GameManager.Instance.speedMultiplier == 0)
 			GameManager.Instance.speedMultiplier = 1;
@@ -55,6 +60,12 @@ public class BlockSpawnScript : MonoBehaviour
 		currentTexts++;
 
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
+		GetComponent<SpriteRenderer>().sprite = talkingSprite;
+
+		if (resetCo != null)
+			StopCoroutine(resetCo);
+		Coroutine reset = StartCoroutine(TalkingCo());
+		resetCo = reset;
 
 		if (blockList.Count == 0)
 		{
@@ -66,6 +77,12 @@ public class BlockSpawnScript : MonoBehaviour
 
 		block.AddComponent<BoxScript>();
 		block.GetComponent<BoxScript>().Initialize(this, blockData);
+	}
+
+	IEnumerator TalkingCo()
+	{
+		yield return new WaitForSeconds(0.3f);
+		GetComponent<SpriteRenderer>().sprite = defaultSprite;
 	}
 }
 

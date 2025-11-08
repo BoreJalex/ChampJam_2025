@@ -18,8 +18,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
 	{
-		Debug.Log(currentBox);
-
 		if (currentBox == null && _bScript.blockList.Count > 0)
 			currentBox = _bScript.blockList[0];
 		else if (currentBox != null)
@@ -39,6 +37,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			currentBox.GetComponent<BoxScript>().stamped = true;
 			currentBox.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = 3;
+
 			GetComponent<SpriteRenderer>().sprite = approveSprite;
             transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             transform.position = new Vector3(-4.07f, -2.32f, 0);
