@@ -141,7 +141,7 @@ public class BoxScript : MonoBehaviour
 			}
 		}
 
-		if(_bScript.allTextsUsed && _bScript.currentTexts < 1)
-			GameManager.Instance.GoToJudgementScene();
+		if (_bScript.allTextsUsed && _bScript.currentTexts < 1)
+			GameManager.Instance.LoadScene("JudgeScreen");
     }
 }
