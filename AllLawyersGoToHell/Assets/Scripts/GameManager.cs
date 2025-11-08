@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
 	// Variables
 	[HideInInspector] public float speedMultiplier = 1;
+    [HideInInspector] public float volume = 1;
     public List<int> answerOutcomes = new List<int>();
 
     private void Awake()
@@ -67,6 +68,12 @@ public class GameManager : MonoBehaviour
     public void ChangeSpeed(float speed)
     {
         speedMultiplier = speed;
+    }
+
+    public void ChangeVolume(float vol)
+    {
+        volume = vol;
+        //AudioListener.volume = volume;
     }
 
     public void GoToJudgementScene()
