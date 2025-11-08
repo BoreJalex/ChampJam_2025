@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class JudgementSceneScript : MonoBehaviour
 {
@@ -63,13 +64,21 @@ public class JudgementSceneScript : MonoBehaviour
 
 		if (GameManager.Instance.currentPoints > 0)
 		{
-
+			Vector3 newRotate = new Vector3(0, 0, 30);
+			_rotatingPart.transform.DORotate(newRotate, 1.5f, RotateMode.Fast);
+			Vector3 newDownPosition = _leftHolder.transform.position + new Vector3(.35f, -1.65f, 0f);
+			_leftHolder.transform.DOMove(newDownPosition, 1.5f);
+			Vector3 newUpPosition = _rightHolder.transform.position + new Vector3(-.45f, 1.7f, 0f);
+			_rightHolder.transform.DOMove(newUpPosition, 1.5f);
 		}
 		else
 		{
-
+			Vector3 newRotate = new Vector3(0, 0, -30);
+			_rotatingPart.transform.DORotate(newRotate, 1.5f, RotateMode.Fast);
+			Vector3 newDownPosition = _leftHolder.transform.position + new Vector3(.4f, 1.65f, 0f);
+			_leftHolder.transform.DOMove(newDownPosition, 1.5f);
+			Vector3 newUpPosition = _rightHolder.transform.position + new Vector3(-.4f, -1.7f, 0f);
+			_rightHolder.transform.DOMove(newUpPosition, 1.5f);
 		}
-
-
 	}
 }
