@@ -1,8 +1,10 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -13,8 +15,10 @@ public class GameManager : MonoBehaviour
 
 	// Trackers
 	private bool isOptionsOpen = false;
-    public int currentPoints;
-    public int currentPerson = 0;
+    [HideInInspector] public int currentPoints;
+	[HideInInspector] public int currentPerson = 0;
+    private bool _musicPlaying = false;
+	public bool musicShouldPlay = true; 
 
 	// Variables
 	[HideInInspector] public float speedMultiplier = 1;
@@ -24,6 +28,8 @@ public class GameManager : MonoBehaviour
     // Sound related stuff
     private int audioSourceCount = 5;
     private AudioSource[] sources;
+    [SerializeField] private AudioClip music;
+    private AudioSource _musicSource = null;
 
     private void Awake()
     {
@@ -48,9 +54,34 @@ public class GameManager : MonoBehaviour
             sources[i] = source;
         }
 
-    }
+        if(_musicSource == null)
+		    _musicSource = this.AddComponent<AudioSource>();
+	}
 
-    private void FindReferences()
+	private void Update()
+	{
+        if (musicShouldPlay && _musicSource != null)
+        {
+            if (SceneManager.GetActiveScene().Equals("JudgeScreen"))
+            {
+                _musicSource.Stop();
+                musicShouldPlay = false;
+            }
+            if (_musicPlaying == false)
+            {
+                _musicSource.PlayOneShot(music, .5f * volumeLevel);
+				musicShouldPlay = false;
+				_musicPlaying = true;
+            }
+            if (!_musicSource.isPlaying && music == true)
+            {
+                musicShouldPlay = true; 
+                _musicPlaying = false;
+            }
+        }
+	}
+
+	private void FindReferences()
     {
         if (SceneManager.GetActiveScene().name == "StartScreen")
         {
