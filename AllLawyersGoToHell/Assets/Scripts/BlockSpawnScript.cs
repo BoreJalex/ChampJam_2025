@@ -55,7 +55,7 @@ public class BoxScript : MonoBehaviour
 	private SpriteRenderer _outlineRend; 
 
 	// Values
-	public bool _stamped = false;
+	public bool stamped = false;
 
 	public void Initialize(float fallSpeed, PlayerScript pScript)
 	{
@@ -77,6 +77,6 @@ public class BoxScript : MonoBehaviour
 		if (_pScript.currentBox != null && _pScript.currentBox == gameObject)
 			_outlineRend.color = Color.red;
 		else
-			_outlineRend.color = Color.green;
+			_outlineRend.color = Color.black;
 	}
 }
