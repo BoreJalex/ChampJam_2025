@@ -51,6 +51,7 @@ public class JudgementSceneScript : MonoBehaviour
 					break;
 			}
 
+			_thingsSpawned++;
 			yield return new WaitForSeconds(.3f);
 		}
 	}

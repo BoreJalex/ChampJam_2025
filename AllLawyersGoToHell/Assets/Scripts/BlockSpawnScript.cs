@@ -27,10 +27,10 @@ public class BlockSpawnScript : MonoBehaviour
 
     private void Start()
 	{
-		boxFallSpeed *= GameManager.Instance.speedMultiplier;
-
 		if (GameManager.Instance.speedMultiplier == 0)
 			GameManager.Instance.speedMultiplier = 1;
+
+		boxFallSpeed *= GameManager.Instance.speedMultiplier;
 	}
 
 	private void Update()
@@ -44,7 +44,7 @@ public class BlockSpawnScript : MonoBehaviour
 		}
 		else if(_textLog.texts.Length <= _textsUsed)
 			allTextsUsed = true;
-    }
+	}
 
 	void SpawnBlock()
 	{
@@ -150,7 +150,7 @@ public class BoxScript : MonoBehaviour
 			}
 		}
 
-		if(_bScript.allTextsUsed && _bScript.currentTexts <= 1)
+		if(_bScript.allTextsUsed && _bScript.currentTexts < 1)
 			GameManager.Instance.GoToJudgementScene();
     }
 }
