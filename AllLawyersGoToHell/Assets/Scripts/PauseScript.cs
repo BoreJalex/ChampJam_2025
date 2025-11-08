@@ -5,11 +5,10 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour
 {
     private bool isPaused = false;
-    public GameObject pauseMenuUI;
+    [SerializeField] public GameObject pauseMenuUI;
     
     private void Start()
     {
-        pauseMenuUI = GameObject.Find("PauseMenuUI");
         Time.timeScale = 1f; // Ensure the game starts unpaused
         isPaused = false;
         if (pauseMenuUI != null)
@@ -40,6 +39,6 @@ public class PauseScript : MonoBehaviour
     {
         Time.timeScale = 1f; // Reset time scale before returning to menu
         isPaused = false;
-        GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel("MainMenu");
+        GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel("StartScreen");
     }
 }
