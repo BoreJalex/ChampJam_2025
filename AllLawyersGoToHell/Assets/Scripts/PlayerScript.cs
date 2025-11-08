@@ -74,20 +74,28 @@ public class PlayerScript : MonoBehaviour
 			{
 				if (currentBox.GetComponent<BoxScript>().stamped) return;
 
+				// Sorting orders
+				currentBox.GetComponent<SpriteRenderer>().sortingOrder = 5;
+				currentBox.transform.GetChild(1).GetComponent<Canvas>().sortingOrder = 6;
+
+				// Sprite of Jack
 				currentBox.GetComponent<BoxScript>().removed = true;
                 GetComponent<SpriteRenderer>().sprite = pointingSprite;
                 transform.localScale = new Vector3(0.38f, 0.38f, 0.38f);
                 transform.position = new Vector3(-2.84f, -2.23f, 0);
 
+				// Sounds
 				int randomChoice = UnityEngine.Random.Range(0, 3);
 				float randomPitch = UnityEngine.Random.Range(.6f, 1f);
 				GameManager.Instance.PlaySound(Scoffs[randomChoice], randomPitch);
 
+				// Sprite reset
 				if (resetCo != null)
 					StopCoroutine(resetCo);
 				Coroutine reset = StartCoroutine(ResetSprite());
 				resetCo = reset;
 
+				// Messing with array of blocks
 				int wasIndex = currentIndex;
 				_bScript.blockList.RemoveAt(currentIndex);
 
@@ -103,7 +111,6 @@ public class PlayerScript : MonoBehaviour
 				rb.AddForce(boxDirection, ForceMode2D.Impulse);
 				rb.gravityScale = 5;
 				rb.AddTorque(rotationForce);
-				rend.sortingOrder = 2;
 
 				// Setting next highlighted box
 				if (_bScript.blockList.Count >= 1)
