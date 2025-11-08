@@ -40,7 +40,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
-			if (currentIndex != -1)
+			if (currentIndex != -1 && _bScript.blockList.Count > 0)
 			{
 				if (currentBox.GetComponent<BoxScript>().stamped) return;
 
@@ -68,21 +68,26 @@ public class PlayerScript : MonoBehaviour
 				rend.sortingOrder = 2;
 
 				// Setting next highlighted box
-				if (_bScript.blockList.Count >= 1)
-					if (_bScript.blockList.Count > currentIndex)
-						currentBox = _bScript.blockList[wasIndex];
-					else if (_bScript.blockList.Count > 1)
-					{
-						if (_bScript.blockList[wasIndex - 1] != null)
-							currentBox = _bScript.blockList[wasIndex - 1];
-						else
-							currentBox = _bScript.blockList[0];
-					}
-					else
-						currentBox = _bScript.blockList[0];
-			}
+				selectBlock(wasIndex);
+            }
 		}
 	}
+
+	public void selectBlock(int index)
+	{
+        if (_bScript.blockList.Count >= 1)
+            if (_bScript.blockList.Count > currentIndex)
+                currentBox = _bScript.blockList[index];
+            else if (_bScript.blockList.Count > 1)
+            {
+                if (_bScript.blockList[index - 1] != null)
+                    currentBox = _bScript.blockList[index - 1];
+                else
+                    currentBox = _bScript.blockList[0];
+            }
+            else
+                currentBox = _bScript.blockList[0];
+    }
 
 	IEnumerator ResetSprite()
     {

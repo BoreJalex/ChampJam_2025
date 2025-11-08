@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
 	// Variables
 	[HideInInspector] public float speedMultiplier = 1;
-    [HideInInspector] public float volume = 1;
+    [HideInInspector] public float volumeLevel = 1;
     public List<int> answerOutcomes = new List<int>();
 
     // Sound related stuff
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeVolume(float vol)
     {
-        volume = vol;
+        volumeLevel = vol;
         //AudioListener.volume = volume;
     }
 
@@ -115,6 +115,6 @@ public class GameManager : MonoBehaviour
         source.pitch = UnityEngine.Random.Range(minPitch, maxPitch);
 
         // Play with volume edited as needed
-        source.PlayOneShot(clip, volume);
+        source.PlayOneShot(clip, volume * volumeLevel);
     }
 }
