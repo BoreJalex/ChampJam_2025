@@ -21,6 +21,7 @@ public class BlockSpawnScript : MonoBehaviour
 	private float _timeSinceSpawn;
 
 	// Text tracking
+	private int _currentChoice = 0;
 	private int _textsUsed = 0;
 	public int currentTexts = 0;
 	[HideInInspector] public bool allTextsUsed = false;
@@ -48,19 +49,10 @@ public class BlockSpawnScript : MonoBehaviour
 
 	void SpawnBlock()
 	{
-		TestimonyObject blockData = null;
-		int choice = 0;
-		while (blockData == null)
-		{
-			choice = Random.Range(0, _textLog.texts.Length);
-			if (!_textLog.texts[choice].used)
-			{
-				blockData = _textLog.texts[choice];
-				_textLog.texts[choice].used = true;
-				_textsUsed++;
-				currentTexts++;
-			}
-		}
+		TestimonyObject blockData = _textLog.texts[_currentChoice];
+		_currentChoice++;
+		_textsUsed++;
+		currentTexts++;
 
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
 
@@ -120,7 +112,6 @@ public class BoxScript : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		_blockData.used = false;
 		_bScript.currentTexts--;
 
 		if(_blockData.points < 0)
