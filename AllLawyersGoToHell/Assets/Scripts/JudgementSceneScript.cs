@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI;
 
 public class JudgementSceneScript : MonoBehaviour
 {
@@ -14,8 +13,6 @@ public class JudgementSceneScript : MonoBehaviour
 	// Objects
 	[SerializeField] private GameObject goodSquare;
 	[SerializeField] private GameObject evilSquare;
-	[SerializeField] private GameObject _canvas;
-	[SerializeField] private Button _continueButton;
 
 	// The Scale
 	[SerializeField] private GameObject _rotatingPart;
@@ -166,7 +163,6 @@ public class JudgementSceneScript : MonoBehaviour
 			_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[0];
 			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[2];
 			_theCircle.transform.position = new Vector3(_theCircle.transform.position.x, 5.05f, 0);
-<<<<<<< HEAD
 			GameManager.Instance.PlaySound(fireEruption);
 			switch (GameManager.Instance.currentPerson)
 			{
@@ -183,12 +179,6 @@ public class JudgementSceneScript : MonoBehaviour
                     break;
             }
         }
-=======
-
-			_continueButton.interactable = false; 
-			_continueButton.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-		}
->>>>>>> 0edc047439c42399f2c34f1dce6537ac31fc61e2
 
 		yield return new WaitForSeconds(3);
 
@@ -196,22 +186,10 @@ public class JudgementSceneScript : MonoBehaviour
 		GameManager.Instance.currentPoints = 0;
 		GameManager.Instance.answerOutcomes.Clear();
 
-		_canvas.SetActive(true);
-	}
-
-	public void toMenu()
-	{
-		GameManager.Instance.LoadScene("StartScreen");
-	}
-	public void restart()
-	{
-		GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson);
-	}
-	public void Continue()
-	{
-		if(GameManager.Instance.currentPerson > 1)
-			toMenu();
-		else
+		// Loading next scene
+		if (GameManager.Instance.currentPerson <= 1)
 			GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson + 1);
+		else
+			GameManager.Instance.LoadScene("StartScreen");
 	}
 }
