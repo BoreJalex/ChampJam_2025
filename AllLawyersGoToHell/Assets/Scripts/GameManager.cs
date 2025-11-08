@@ -67,12 +67,12 @@ public class GameManager : MonoBehaviour
         GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel(sceneName);
     }
 
-    public void quitGame()
+    public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void toggleOptions()
+    public void ToggleOptions()
     {
         if (isOptionsOpen)
         {
