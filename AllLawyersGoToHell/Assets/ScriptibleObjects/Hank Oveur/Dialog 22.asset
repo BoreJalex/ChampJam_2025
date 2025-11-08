@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
-  m_Name: Dialog 13
+  m_Name: Dialog 22
   m_EditorClassIdentifier: 
-  testimonyText: "I also donated to my local weather station, if that counts.\r"
+  testimonyText: "I never complained about work! I let the kids be happy!\r"
   points: 5

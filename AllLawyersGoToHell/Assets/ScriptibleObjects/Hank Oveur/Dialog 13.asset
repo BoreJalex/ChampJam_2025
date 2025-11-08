@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 13
   m_EditorClassIdentifier: 
-  testimonyText: "I also donated to my local weather station, if that counts.\r"
-  points: 5
+  testimonyText: "She won\u2019t mind that time I drank a dozen bottles during our
+    honeymoon."
+  points: -10
