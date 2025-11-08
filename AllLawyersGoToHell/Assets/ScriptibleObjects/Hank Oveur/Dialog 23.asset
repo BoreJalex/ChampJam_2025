@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 23
   m_EditorClassIdentifier: 
-  testimonyText: 'I respect the 19th Amendment! I thank veterans for their service!
-
-'
+  testimonyText: "I respect the 19th Amendment! I thank veterans for their service!\r"
   points: 5

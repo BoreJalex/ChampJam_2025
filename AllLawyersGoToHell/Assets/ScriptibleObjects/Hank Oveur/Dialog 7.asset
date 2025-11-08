@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dialog 7
   m_EditorClassIdentifier: 
   testimonyText: "Don\u2019t matter if my home loans defaulted no more, I\u2019m
-    dead!\r\n"
+    dead!\r"
   points: -10

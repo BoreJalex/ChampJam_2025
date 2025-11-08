@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 20
   m_EditorClassIdentifier: 
-  testimonyText: 'Or when I brought alcohol into a school zone. They were asking
-    for it!
-
-'
+  testimonyText: "Or when I brought alcohol into a school zone. They were asking
+    for it!\r"
   points: -10

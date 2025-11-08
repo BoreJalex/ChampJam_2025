@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dialog 4
   m_EditorClassIdentifier: 
   testimonyText: "My coworkers sure didn\u2019t like me speeding through our construction
-    zone.\r\n"
+    zone.\r"
   points: -10

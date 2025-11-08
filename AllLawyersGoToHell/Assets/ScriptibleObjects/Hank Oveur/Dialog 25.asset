@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dialog 25
   m_EditorClassIdentifier: 
   testimonyText: "I\u2019m sorry I hit him with my damn car! He\u2019ll be okay!
-    $#@* man!\r\n"
+    $#@* man!\r"
   points: -20
