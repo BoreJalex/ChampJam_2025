@@ -63,7 +63,7 @@ public class BlockSpawnScript : MonoBehaviour
 
 		if (resetCo != null)
 			StopCoroutine(resetCo);
-		Coroutine reset = StartCoroutine(TalkingCo());
+		Coroutine reset = StartCoroutine(TalkingCo(blockData));
 		resetCo = reset;
 
 		if (blockList.Count == 0)
@@ -78,11 +78,13 @@ public class BlockSpawnScript : MonoBehaviour
 		block.GetComponent<BoxScript>().Initialize(this, blockData);
 	}
 
-	IEnumerator TalkingCo()
+	IEnumerator TalkingCo(TestimonyObject blockData)
 	{
 		SpriteRenderer charSprite = GetComponent<SpriteRenderer>();
 
-		for (int x = 0; x < 5; x++)
+		int yapAmount = blockData.testimonyText.Length / 5;
+
+		for (int x = 0; x < yapAmount; x++)
 		{
 			charSprite.sprite = talkingSprite;
 			transform.position += new Vector3(0, .1f, 0);

@@ -146,8 +146,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80395326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17000006, y: 2.33, z: 0.033457}
-  m_LocalScale: {x: 1.1692085, y: 1.1692085, z: 1.1692085}
+  m_LocalPosition: {x: 3.39, y: 0.07, z: 0.2175}
+  m_LocalScale: {x: 0.79027975, y: 0.79027975, z: 0.79027975}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 867118457}
@@ -1200,6 +1200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 6724136673845579305, guid: feb4c00d216b2144191473d60d6a72cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6724136673845579309, guid: feb4c00d216b2144191473d60d6a72cc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1451,7 +1455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735967350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.98, y: 3.89, z: 0.029149948}
+  m_LocalPosition: {x: 7.85, y: 0.34, z: 0.029149948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1482,7 +1486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744778870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19000006, y: 3.55, z: 0.029149948}
+  m_LocalPosition: {x: 3.28, y: 0.45, z: 0.029149948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
