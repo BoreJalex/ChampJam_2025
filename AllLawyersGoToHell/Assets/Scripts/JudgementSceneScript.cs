@@ -48,6 +48,8 @@ public class JudgementSceneScript : MonoBehaviour
 	{
 		int choice = 0;
 
+		yield return new WaitForSeconds(1);
+
 		while (!_decided)
 		{
 			choice = Random.Range(0, 5);
@@ -150,6 +152,7 @@ public class JudgementSceneScript : MonoBehaviour
 			yield return new WaitForSeconds(3.25f);
 			_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[0];
 			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[2];
+			_theCircle.transform.position = new Vector3(_theCircle.transform.position.x, 5.05f, 0);
 		}
 	}
 }
