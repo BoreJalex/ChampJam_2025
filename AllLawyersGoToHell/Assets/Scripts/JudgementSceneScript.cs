@@ -6,21 +6,54 @@ using DG.Tweening;
 
 public class JudgementSceneScript : MonoBehaviour
 {
+	// Spawns
 	[SerializeField] private Transform leftSpawn;
 	[SerializeField] private Transform rightSpawn;
 
+	// Objects
 	[SerializeField] private GameObject goodSquare;
 	[SerializeField] private GameObject evilSquare;
 
+	// The Scale
 	[SerializeField] private GameObject _rotatingPart;
 	[SerializeField] private GameObject _leftHolder;
 	[SerializeField] private GameObject _rightHolder;
+
+	// Data
+	private bool _decided = false; 
+
+	// Sounds
+	[SerializeField] private AudioClip[] judgeVoice;
+	[SerializeField] private AudioClip trumpet;
+	[SerializeField] private AudioClip sentenceToHeaven;
+	[SerializeField] private AudioClip sentenceToHell;
 
 	private int _thingsSpawned = 0;
 
 	private void Start()
 	{
+		StartCoroutine(judgeSpeaking());
 		StartCoroutine(spawnDeeds());
+	}
+
+	IEnumerator judgeSpeaking()
+	{
+		int choice = 0;
+
+		while (!_decided)
+		{
+			choice = Random.Range(0, 5);
+			float randomPitch = UnityEngine.Random.Range(.8f, 1.2f);
+			GameManager.Instance.PlaySound(judgeVoice[choice], randomPitch);
+			for (int x = 0; x < 3; x++)
+			{
+				transform.position += new Vector3(0, .05f, 0);
+				yield return new WaitForSeconds(0.1f);
+				transform.position -= new Vector3(0, .05f, 0);
+				yield return new WaitForSeconds(0.1f);
+			}
+			yield return new WaitForSeconds(.2f);
+		}
 	}
 
 	IEnumerator spawnDeeds()
@@ -85,6 +118,21 @@ public class JudgementSceneScript : MonoBehaviour
 			_leftHolder.transform.DOMove(newDownPosition, 1.5f);
 			Vector3 newUpPosition = _rightHolder.transform.position + new Vector3(-.265f, -1.1f, 0f);
 			_rightHolder.transform.DOMove(newUpPosition, 1.5f);
+		}
+
+		_decided = true; 
+
+		yield return new WaitForSeconds(1);
+
+		if (GameManager.Instance.currentPoints > 0)
+		{
+			GameManager.Instance.PlaySound(sentenceToHeaven);
+			yield return new WaitForSeconds(3.25f);
+			GameManager.Instance.PlaySound(trumpet);
+		}
+		else
+		{
+			GameManager.Instance.PlaySound(sentenceToHell);
 		}
 	}
 }

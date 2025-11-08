@@ -1605,6 +1605,12 @@ MonoBehaviour:
   defaultSprite: {fileID: 1963370291, guid: ce752a031331b024d9f9bef3b96f66c4, type: 3}
   pointingSprite: {fileID: 889085714, guid: ce752a031331b024d9f9bef3b96f66c4, type: 3}
   approveSprite: {fileID: 1509904280, guid: ce752a031331b024d9f9bef3b96f66c4, type: 3}
+  stamp: {fileID: 8300000, guid: e4bd2372405047f40a66e37137e34451, type: 3}
+  Scoffs:
+  - {fileID: 8300000, guid: cfe9caffcddfbfe469952131a2c2cb9f, type: 3}
+  - {fileID: 8300000, guid: d1031f8ddc282164c9f3317b592f3bee, type: 3}
+  - {fileID: 8300000, guid: d067f525dceead5479433373b59f7e02, type: 3}
+  buttonSwap: {fileID: 8300000, guid: fb1d73933ff589f4eae96ede73d9a28f, type: 3}
 --- !u!1 &2049277468
 GameObject:
   m_ObjectHideFlags: 0
