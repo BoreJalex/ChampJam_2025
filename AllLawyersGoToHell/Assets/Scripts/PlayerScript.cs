@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,16 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite pointingSprite;
     [SerializeField] private Sprite approveSprite;
+	private Coroutine resetCo = null;
 
     private void Update()
 	{
+		Debug.Log(currentBox);
+
 		if (currentBox == null && _bScript.blockList.Count > 0)
 			currentBox = _bScript.blockList[0];
-		currentIndex = _bScript.blockList.IndexOf(currentBox);
+		else if (currentBox != null)
+			currentIndex = _bScript.blockList.IndexOf(currentBox);
 
 		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
@@ -37,9 +42,12 @@ public class PlayerScript : MonoBehaviour
 			GetComponent<SpriteRenderer>().sprite = approveSprite;
             transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             transform.position = new Vector3(-4.07f, -2.32f, 0);
-            StartCoroutine(ResetSprite());
 
-        }
+			if (resetCo != null)
+				StopCoroutine(resetCo);
+			Coroutine reset = StartCoroutine(ResetSprite());
+			resetCo = reset;
+		}
         if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			if (currentIndex != -1 && _bScript.blockList.Count > 0 && currentBox != null)
@@ -50,15 +58,19 @@ public class PlayerScript : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = pointingSprite;
                 transform.localScale = new Vector3(0.38f, 0.38f, 0.38f);
                 transform.position = new Vector3(-2.84f, -2.23f, 0);
-                StartCoroutine(ResetSprite());
 
-                int wasIndex = currentIndex;
+				if (resetCo != null)
+					StopCoroutine(resetCo);
+				Coroutine reset = StartCoroutine(ResetSprite());
+				resetCo = reset;
+
+				int wasIndex = currentIndex;
 				_bScript.blockList.RemoveAt(currentIndex);
 
 				// Random Values for speed and rotation
-				float heightForce = Random.Range(10f, 20f);
-				float sidewaysForce = Random.Range(10f, 20f);
-				float rotationForce = Random.Range(-80f, -120f);
+				float heightForce = UnityEngine.Random.Range(10f, 20f);
+				float sidewaysForce = UnityEngine.Random.Range(10f, 20f);
+				float rotationForce = UnityEngine.Random.Range(-80f, -120f);
 
 				// Chucking
 				Rigidbody2D rb = currentBox.GetComponent<Rigidbody2D>();
@@ -70,26 +82,21 @@ public class PlayerScript : MonoBehaviour
 				rend.sortingOrder = 2;
 
 				// Setting next highlighted box
-				selectBlock(wasIndex);
-            }
+				if (_bScript.blockList.Count >= 1)
+					if (_bScript.blockList.Count > currentIndex)
+						currentBox = _bScript.blockList[wasIndex];
+					else if (_bScript.blockList.Count > 1)
+					{
+						if (_bScript.blockList[wasIndex - 1] != null)
+							currentBox = _bScript.blockList[wasIndex - 1];
+						else
+							currentBox = _bScript.blockList[0];
+					}
+					else
+						currentBox = _bScript.blockList[0];
+			}
 		}
 	}
-
-	public void selectBlock(int index)
-	{
-        if (_bScript.blockList.Count >= 1)
-            if (_bScript.blockList.Count > currentIndex)
-                currentBox = _bScript.blockList[index];
-            else if (_bScript.blockList.Count > 1)
-            {
-                if (_bScript.blockList[index - 1] != null)
-                    currentBox = _bScript.blockList[index - 1];
-                else
-                    currentBox = _bScript.blockList[0];
-            }
-            else
-                currentBox = _bScript.blockList[0];
-    }
 
 	IEnumerator ResetSprite()
     {

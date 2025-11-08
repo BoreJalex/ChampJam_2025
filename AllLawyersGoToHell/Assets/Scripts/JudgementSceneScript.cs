@@ -44,7 +44,7 @@ public class JudgementSceneScript : MonoBehaviour
 					QuiteEvil.transform.localScale *= 1.5f;
 					break;
 				case -10:
-					GameObject Evil = Instantiate(evilSquare, randomLeft, Quaternion.identity);
+					GameObject Evil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					break;
 				case 5:
 					GameObject Good = Instantiate(goodSquare, randomLeft, Quaternion.identity);

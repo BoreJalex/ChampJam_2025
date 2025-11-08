@@ -114,6 +114,12 @@ public class BoxScript : MonoBehaviour
 	{
 		_bScript.currentTexts--;
 
+		if (_bScript.blockList.IndexOf(gameObject) == _bScript.blockList.IndexOf(_pScript.currentBox))
+		{
+			_bScript.blockList.Remove(gameObject);
+			_pScript.currentBox = null;
+		}
+
 		if(_blockData.points < 0)
 		{
 			if (stamped)
