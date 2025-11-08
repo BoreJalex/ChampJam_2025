@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
 			currentBox.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = 3;
 			GetComponent<SpriteRenderer>().sprite = approveSprite;
             transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-            transform.position = new Vector3(-5.95f, -2.35f, 0);
+            transform.position = new Vector3(-4.07f, -2.32f, 0);
             StartCoroutine(ResetSprite());
 
         }
@@ -47,7 +47,7 @@ public class PlayerScript : MonoBehaviour
 				currentBox.GetComponent<BoxScript>().removed = true;
                 GetComponent<SpriteRenderer>().sprite = pointingSprite;
                 transform.localScale = new Vector3(0.38f, 0.38f, 0.38f);
-                transform.position = new Vector3(-4.86f, -2.43f, 0);
+                transform.position = new Vector3(-2.84f, -2.23f, 0);
                 StartCoroutine(ResetSprite());
 
                 int wasIndex = currentIndex;
@@ -89,6 +89,6 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         GetComponent<SpriteRenderer>().sprite = defaultSprite;
 		transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-		transform.position = new Vector3(-6.35f, -2.33f, 0);
+		transform.position = new Vector3(-4.46f, -2.25f, 0);
     }
 }
