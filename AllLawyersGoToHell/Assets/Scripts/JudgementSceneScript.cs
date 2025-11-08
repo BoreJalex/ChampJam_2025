@@ -21,6 +21,7 @@ public class JudgementSceneScript : MonoBehaviour
 
 	// Data
 	private bool _decided = false; 
+	private int _thingsSpawned = 0;
 
 	// Sounds
 	[SerializeField] private AudioClip[] judgeVoice;
@@ -28,10 +29,17 @@ public class JudgementSceneScript : MonoBehaviour
 	[SerializeField] private AudioClip sentenceToHeaven;
 	[SerializeField] private AudioClip sentenceToHell;
 
-	private int _thingsSpawned = 0;
+	// Sprites
+	[SerializeField] private GameObject _theJudged;
+	[SerializeField] private GameObject _theCircle; 
+	[SerializeField] private Sprite[] possibleSprites;
+	[SerializeField] private Sprite[] circleSprites;
+
 
 	private void Start()
 	{
+		_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[(GameManager.Instance.currentPerson * 2) + 1];
+
 		StartCoroutine(judgeSpeaking());
 		StartCoroutine(spawnDeeds());
 	}
@@ -52,7 +60,7 @@ public class JudgementSceneScript : MonoBehaviour
 				transform.position -= new Vector3(0, .05f, 0);
 				yield return new WaitForSeconds(0.1f);
 			}
-			yield return new WaitForSeconds(.2f);
+			yield return new WaitForSeconds(.4f);
 		}
 	}
 
@@ -60,6 +68,10 @@ public class JudgementSceneScript : MonoBehaviour
 	{
 		Vector3 randomLeft;
 		Vector3 randomRight;
+
+		yield return new WaitForSeconds(1);
+
+		_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[1];
 
 		while (GameManager.Instance.answerOutcomes.Count > _thingsSpawned)
 		{
@@ -96,10 +108,10 @@ public class JudgementSceneScript : MonoBehaviour
 			}
 
 			_thingsSpawned++;
-			yield return new WaitForSeconds(.3f);
+			yield return new WaitForSeconds(.5f);
 		}
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 
 		if (GameManager.Instance.currentPoints > 0)
 		{
@@ -128,11 +140,16 @@ public class JudgementSceneScript : MonoBehaviour
 		{
 			GameManager.Instance.PlaySound(sentenceToHeaven);
 			yield return new WaitForSeconds(3.25f);
+			_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[(GameManager.Instance.currentPerson * 2) + 2];
+			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[1];
 			GameManager.Instance.PlaySound(trumpet);
 		}
 		else
 		{
 			GameManager.Instance.PlaySound(sentenceToHell);
+			yield return new WaitForSeconds(3.25f);
+			_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[0];
+			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[2];
 		}
 	}
 }
