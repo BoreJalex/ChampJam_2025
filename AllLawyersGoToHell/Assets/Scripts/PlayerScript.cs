@@ -10,8 +10,11 @@ public class PlayerScript : MonoBehaviour
 	// Trackers
 	[HideInInspector] public GameObject currentBox = null;
 	[HideInInspector] public int currentIndex = -1;
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Sprite pointingSprite;
+    [SerializeField] private Sprite approveSprite;
 
-	private void Update()
+    private void Update()
 	{
 		currentIndex = _bScript.blockList.IndexOf(currentBox);
 
