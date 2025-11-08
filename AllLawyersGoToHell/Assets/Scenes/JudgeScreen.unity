@@ -1772,9 +1772,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 421d6439342acfe44952d5a0495589e2, type: 3}
   - {fileID: 8300000, guid: 025bde7345ebd2d4b9085bba878245cc, type: 3}
   - {fileID: 8300000, guid: c57881aa194a97a44af085a77679fdd9, type: 3}
+  victimScream:
+  - {fileID: 8300000, guid: de43706607789604086eb0bee70865fc, type: 3}
+  - {fileID: 8300000, guid: fd538399773525d439b737460996d05c, type: 3}
+  - {fileID: 8300000, guid: 4ae68593e9e0f9948bdb7aca989b0589, type: 3}
   trumpet: {fileID: 8300000, guid: 310f7519c41e8dd419f24800ab7aa3a3, type: 3}
   sentenceToHeaven: {fileID: 8300000, guid: 3ee10d8bc0bf10c4faab3c5d7f8b98a6, type: 3}
-  sentenceToHell: {fileID: 8300000, guid: b07883757e25b4141a507e8097ebeee0, type: 3}
+  sentenceToHell: {fileID: 8300000, guid: 46ceb418d5668d24fb0cbbc415e6ca9d, type: 3}
+  fireEruption: {fileID: 0}
   _theJudged: {fileID: 1691322401}
   _theCircle: {fileID: 341952946}
   possibleSprites:

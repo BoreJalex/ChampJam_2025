@@ -753,7 +753,10 @@ MonoBehaviour:
   - {fileID: 912123380, guid: bf43f29fb9292b345b5195b185af19c3, type: 3}
   defaultBlock: {fileID: 21300000, guid: 95d70c9c23d7b1640966aa2ddae6c125, type: 3}
   outlineBlock: {fileID: 21300000, guid: 0367bab3104bac5488b056cb8a560922, type: 3}
-  _soundLogs: []
+  _soundLogs:
+  - {fileID: 8300000, guid: 4337fcc1171e52a45ac776de818017f1, type: 3}
+  - {fileID: 8300000, guid: 187e028a3baacac4dbfed2ff2b6128a1, type: 3}
+  - {fileID: 8300000, guid: b004f2529644ec445b93ef3ceffb1760, type: 3}
 --- !u!1 &950328308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1481,7 @@ MonoBehaviour:
   defaultSprite: {fileID: 1963370291, guid: ce752a031331b024d9f9bef3b96f66c4, type: 3}
   pointingSprite: {fileID: 889085714, guid: ce752a031331b024d9f9bef3b96f66c4, type: 3}
   approveSprite: {fileID: 1509904280, guid: ce752a031331b024d9f9bef3b96f66c4, type: 3}
-  stamp: {fileID: 8300000, guid: e4bd2372405047f40a66e37137e34451, type: 3}
+  stamp: {fileID: 8300000, guid: d5e6f61649348b7478875159647a4822, type: 3}
   Scoffs:
   - {fileID: 8300000, guid: cfe9caffcddfbfe469952131a2c2cb9f, type: 3}
   - {fileID: 8300000, guid: d1031f8ddc282164c9f3317b592f3bee, type: 3}

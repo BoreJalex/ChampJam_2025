@@ -25,12 +25,14 @@ public class JudgementSceneScript : MonoBehaviour
 
 	// Sounds
 	[SerializeField] private AudioClip[] judgeVoice;
+	[SerializeField] private AudioClip[] victimScream;
 	[SerializeField] private AudioClip trumpet;
 	[SerializeField] private AudioClip sentenceToHeaven;
 	[SerializeField] private AudioClip sentenceToHell;
+    [SerializeField] private AudioClip fireEruption;
 
-	// Sprites
-	[SerializeField] private GameObject _theJudged;
+    // Sprites
+    [SerializeField] private GameObject _theJudged;
 	[SerializeField] private GameObject _theCircle; 
 	[SerializeField] private Sprite[] possibleSprites;
 	[SerializeField] private Sprite[] circleSprites;
@@ -161,7 +163,22 @@ public class JudgementSceneScript : MonoBehaviour
 			_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[0];
 			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[2];
 			_theCircle.transform.position = new Vector3(_theCircle.transform.position.x, 5.05f, 0);
-		}
+			GameManager.Instance.PlaySound(fireEruption);
+			switch (GameManager.Instance.currentPerson)
+			{
+                case 0:
+					GameManager.Instance.PlaySound(victimScream[0]);
+                    break;
+                case 1:
+                    GameManager.Instance.PlaySound(victimScream[1]);
+                    break;
+                case 2:
+                    GameManager.Instance.PlaySound(victimScream[2]);
+                    break;
+				default:
+                    break;
+            }
+        }
 
 		yield return new WaitForSeconds(3);
 
