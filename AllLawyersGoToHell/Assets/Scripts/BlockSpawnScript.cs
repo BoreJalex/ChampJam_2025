@@ -29,11 +29,14 @@ public class BlockSpawnScript : MonoBehaviour
 	[HideInInspector] public bool allTextsUsed = false;
 
 	// Sprite Tracking
-	[Header("Sprites")]
 	[SerializeField] private Sprite[] _characterSprites;
 	[SerializeField] public Sprite defaultBlock;
     [SerializeField] public Sprite outlineBlock;
     private Coroutine resetCo = null;
+
+	// Sound Tracking
+	[SerializeField] private AudioClip[] _soundLogs;
+	private bool soundPlaying = false; 
 
 	private void Start()
 	{
@@ -69,6 +72,8 @@ public class BlockSpawnScript : MonoBehaviour
 		currentTexts++;
 
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
+
+		//GameManager.Instance.PlaySound(_soundLogs[_currentInduvidual]); // PUT THIS BACK WHEN TALKING IMPLIMENTED
 
 		if (resetCo != null)
 			StopCoroutine(resetCo);

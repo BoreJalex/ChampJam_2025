@@ -749,8 +749,11 @@ MonoBehaviour:
   - {fileID: 1989153549, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
   - {fileID: -1328558308, guid: e1e4a0f653004fb4e9437aa6e3f19fbd, type: 3}
   - {fileID: -954284601, guid: e1e4a0f653004fb4e9437aa6e3f19fbd, type: 3}
+  - {fileID: 2049560248, guid: bf43f29fb9292b345b5195b185af19c3, type: 3}
+  - {fileID: 912123380, guid: bf43f29fb9292b345b5195b185af19c3, type: 3}
   defaultBlock: {fileID: 21300000, guid: 95d70c9c23d7b1640966aa2ddae6c125, type: 3}
   outlineBlock: {fileID: 21300000, guid: 0367bab3104bac5488b056cb8a560922, type: 3}
+  _soundLogs: []
 --- !u!1 &950328308
 GameObject:
   m_ObjectHideFlags: 0

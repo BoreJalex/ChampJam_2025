@@ -1783,6 +1783,8 @@ MonoBehaviour:
   - {fileID: -1763874682, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
   - {fileID: -250472398, guid: e1e4a0f653004fb4e9437aa6e3f19fbd, type: 3}
   - {fileID: -1365291627, guid: e1e4a0f653004fb4e9437aa6e3f19fbd, type: 3}
+  - {fileID: -1678741689, guid: bf43f29fb9292b345b5195b185af19c3, type: 3}
+  - {fileID: 1779859382, guid: bf43f29fb9292b345b5195b185af19c3, type: 3}
   circleSprites:
   - {fileID: -293191424, guid: bf093172f24719c4a81f014eb337a1ef, type: 3}
   - {fileID: -482372367, guid: bf093172f24719c4a81f014eb337a1ef, type: 3}

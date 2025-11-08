@@ -154,5 +154,9 @@ public class JudgementSceneScript : MonoBehaviour
 			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[2];
 			_theCircle.transform.position = new Vector3(_theCircle.transform.position.x, 5.05f, 0);
 		}
+
+		yield return new WaitForSeconds(3);
+
+		GameManager.Instance.LoadScene("StartScreen");
 	}
 }
