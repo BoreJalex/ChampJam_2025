@@ -11,6 +11,10 @@ public class JudgementSceneScript : MonoBehaviour
 	[SerializeField] private GameObject goodSquare;
 	[SerializeField] private GameObject evilSquare;
 
+	[SerializeField] private GameObject _rotatingPart;
+	[SerializeField] private GameObject _leftHolder;
+	[SerializeField] private GameObject _rightHolder;
+
 	private int _thingsSpawned = 0;
 
 	private void Start()
@@ -53,6 +57,17 @@ public class JudgementSceneScript : MonoBehaviour
 
 			_thingsSpawned++;
 			yield return new WaitForSeconds(.3f);
+		}
+
+		yield return new WaitForSeconds(.3f);
+
+		if (GameManager.Instance.currentPoints > 0)
+		{
+			_rotatingPart.GetComponent<Animator>().SetTrigger("TurnLeft");
+		}
+		else
+		{
+			_rotatingPart.GetComponent<Animator>().SetTrigger("TurnRight");
 		}
 	}
 }
