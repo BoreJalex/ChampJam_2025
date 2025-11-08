@@ -32,16 +32,21 @@ public class PlayerScript : MonoBehaviour
 		{
 			currentBox.GetComponent<BoxScript>().stamped = true;
 			currentBox.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = 3;
-		}
-		if (Input.GetKeyDown(KeyCode.RightArrow))
+			GetComponent<SpriteRenderer>().sprite = approveSprite;
+            StartCoroutine(ResetSprite());
+
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			if (currentIndex != -1)
 			{
 				if (currentBox.GetComponent<BoxScript>().stamped) return;
 
 				currentBox.GetComponent<BoxScript>().removed = true;
+                GetComponent<SpriteRenderer>().sprite = pointingSprite;
+				StartCoroutine(ResetSprite());
 
-				int wasIndex = currentIndex;
+                int wasIndex = currentIndex;
 				_bScript.blockList.RemoveAt(currentIndex);
 
 				// Random Values for speed and rotation
@@ -74,4 +79,11 @@ public class PlayerScript : MonoBehaviour
 			}
 		}
 	}
+
+	IEnumerator ResetSprite()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<SpriteRenderer>().sprite = defaultSprite;
+		transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+    }
 }

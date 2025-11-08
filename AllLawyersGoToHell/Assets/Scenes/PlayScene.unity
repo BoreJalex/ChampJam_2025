@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 1405920685}
   _blockPrefab: {fileID: 7903051034932500526, guid: 926290fb6bd5aa24ca3ba4c6c4605b3d, type: 3}
-  pScript: {fileID: 0}
+  pScript: {fileID: 1627434752}
   _textLog: {fileID: 11400000, guid: 9b563992194350a489b19cfa944290b1, type: 2}
   blockList: []
   _blockSpawnRate: 0.75
