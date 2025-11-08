@@ -36,6 +36,8 @@ public class PlayerScript : MonoBehaviour
 			{
 				if (currentBox.GetComponent<BoxScript>().stamped) return;
 
+				currentBox.GetComponent<BoxScript>().removed = true;
+
 				int wasIndex = currentIndex;
 				_bScript.blockList.RemoveAt(currentIndex);
 

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BlockSpawnScript : MonoBehaviour
@@ -7,44 +9,61 @@ public class BlockSpawnScript : MonoBehaviour
 	// Caching
 	[SerializeField] private Transform _spawnPoint;
 	[SerializeField] private GameObject _blockPrefab;
-	[SerializeField] private PlayerScript _pScript;
+	public PlayerScript pScript;
 	[SerializeField] private LogOfTextObject _textLog;
 
 	// Block Related Stuff
 	public List<GameObject> blockList = new List<GameObject>();
 	[SerializeField] private float _blockSpawnRate;
+	public float boxFallSpeed;
 
 	// Timer
 	private float _timeSinceSpawn;
 
-	// Block Stats
-	[SerializeField] private float _boxFallSpeed;
+	// Number tracking
+	[HideInInspector] public int points = 0;
+	private int textsUsed = 0;
 
 	private void Update()
 	{
 		_timeSinceSpawn += Time.deltaTime * _blockSpawnRate;
 
-		if(_timeSinceSpawn >= 2)
+		if(_timeSinceSpawn >= 2 &&  _textLog.texts.Length > textsUsed)
 		{
 			_timeSinceSpawn = 0;
 			SpawnBlock();
 		}
+
+		Debug.Log(points);
 	}
 
 	void SpawnBlock()
 	{
+		TestimonyObject blockData = null;
+		int choice = 0;
+		while (blockData == null)
+		{
+			choice = Random.Range(0, _textLog.texts.Length);
+			if (!_textLog.texts[choice].used)
+			{
+				blockData = _textLog.texts[choice];
+				_textLog.texts[choice].used = true;
+				textsUsed++;
+			}
+		}
+
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
 
-		if(blockList.Count == 0)
+		if (blockList.Count == 0)
 		{
 			blockList.Add(block);
-			_pScript.currentBox = block;
+			pScript.currentBox = block;
 		}
 		else
 			blockList.Add(block);
 
 		block.AddComponent<BoxScript>();
-		block.GetComponent<BoxScript>().Initialize(_boxFallSpeed, _pScript);
+		block.GetComponent<BoxScript>().Initialize(this, blockData);
 	}
 }
 
@@ -53,17 +72,24 @@ public class BoxScript : MonoBehaviour
 	// Cache
 	private float _fallSpeed;
 	private PlayerScript _pScript;
-	private SpriteRenderer _outlineRend; 
+	private TestimonyObject _blockData;
+	private SpriteRenderer _outlineRend;
+	private BlockSpawnScript _bScript;
 
 	// Values
 	public bool stamped = false;
+	public bool removed = false; 
 
-	public void Initialize(float fallSpeed, PlayerScript pScript)
+	public void Initialize(BlockSpawnScript bScript, TestimonyObject blockData)
 	{
-		_fallSpeed = fallSpeed;
-		_pScript = pScript;
-
+		_bScript = bScript;
+		_fallSpeed = bScript.boxFallSpeed;
+		_pScript = bScript.pScript;
+		_blockData = blockData;
+		
 		_outlineRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+		transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = blockData.testimonyText;
 	}
 
 	private void Update()
@@ -75,9 +101,30 @@ public class BoxScript : MonoBehaviour
 			Destroy(gameObject);
 
 		// Visuals
-		if (_pScript.currentBox != null && _pScript.currentBox == gameObject)
-			_outlineRend.color = Color.red;
+		if (_pScript.currentBox != null)
+			if(_pScript.currentBox == gameObject)
+				_outlineRend.color = Color.red;
+			else
+				_outlineRend.color = Color.black;
+	}
+
+	private void OnDestroy()
+	{
+		_blockData.used = false;
+
+		if(_blockData.points < 0)
+		{
+			if (stamped)
+				_bScript.points += _blockData.points * 2;
+			else if(!removed)
+				_bScript.points += _blockData.points;
+		}
 		else
-			_outlineRend.color = Color.black;
+		{
+			if (stamped)
+				_bScript.points += _blockData.points;
+			else
+				_bScript.points -= _blockData.points;
+		}
 	}
 }

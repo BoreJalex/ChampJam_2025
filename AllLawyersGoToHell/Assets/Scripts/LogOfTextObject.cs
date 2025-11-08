@@ -7,5 +7,5 @@ using UnityEngine;
 
 public class LogOfTextObject : ScriptableObject
 {
-	public ScriptableObject[] texts;
+	public TestimonyObject[] texts;
 }
