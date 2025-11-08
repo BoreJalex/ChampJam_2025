@@ -16,6 +16,8 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
 	{
+		if (currentBox == null && _bScript.blockList.Count > 0)
+			currentBox = _bScript.blockList[0];
 		currentIndex = _bScript.blockList.IndexOf(currentBox);
 
 		if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -40,7 +42,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
-			if (currentIndex != -1 && _bScript.blockList.Count > 0)
+			if (currentIndex != -1 && _bScript.blockList.Count > 0 && currentBox != null)
 			{
 				if (currentBox.GetComponent<BoxScript>().stamped) return;
 

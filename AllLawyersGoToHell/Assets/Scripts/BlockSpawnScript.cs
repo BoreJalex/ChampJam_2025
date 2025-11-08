@@ -114,9 +114,6 @@ public class BoxScript : MonoBehaviour
 	{
 		_bScript.currentTexts--;
 
-		if (_bScript.blockList.Count >= 1)
-			_pScript.selectBlock(1);
-
 		if(_blockData.points < 0)
 		{
 			if (stamped)
