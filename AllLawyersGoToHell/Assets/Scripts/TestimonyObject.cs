@@ -7,7 +7,6 @@ using UnityEngine;
 public class TestimonyObject : ScriptableObject
 {
 	[TextArea(15, 20)]
-	[HideInInspector] public bool used = false;
 	public string testimonyText;
 	public int points;
 }
