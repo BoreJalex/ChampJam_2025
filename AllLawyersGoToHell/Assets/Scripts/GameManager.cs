@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     GameObject mainScreen;
     private bool isOptionsOpen = false;
     public float speedMultiplier;
+    
     private void Awake()
     {
         if (Instance == null)
