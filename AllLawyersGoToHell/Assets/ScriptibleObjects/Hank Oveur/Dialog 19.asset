@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 19
   m_EditorClassIdentifier: 
-  testimonyText: 'Nevermind that they docked my pay when I accidentally hit a coworker
-    with a nailgun.
-
-'
+  testimonyText: "Nevermind that they docked my pay when I accidentally hit a coworker
+    with a nailgun.\r"
   points: -10

@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 24
   m_EditorClassIdentifier: 
-  testimonyText: 'I got them a puppy that we all loved! We were happy!
-
-'
+  testimonyText: "I got them a puppy that we all loved! We were happy!\r"
   points: 5

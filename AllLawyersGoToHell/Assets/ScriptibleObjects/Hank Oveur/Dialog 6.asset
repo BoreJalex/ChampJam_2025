@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dialog 6
   m_EditorClassIdentifier: 
   testimonyText: "I use an energy-efficient car so I\u2019m super environmentally
-    friendly.\r\n"
+    friendly.\r"
   points: 5

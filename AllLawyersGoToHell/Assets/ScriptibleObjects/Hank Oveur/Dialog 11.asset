@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 11
   m_EditorClassIdentifier: 
-  testimonyText: "They\u2019ll remember me for all the homework I helped them with!\r\n"
+  testimonyText: "They\u2019ll remember me for all the homework I helped them with!\r"
   points: 5

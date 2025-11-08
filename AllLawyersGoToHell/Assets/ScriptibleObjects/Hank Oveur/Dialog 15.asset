@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 15
   m_EditorClassIdentifier: 
-  testimonyText: 'Well, the savings that I kept after the casino, which is still
-    a lot!
-
-'
+  testimonyText: "Well, the savings that I kept after the casino, which is still
+    a lot!\r"
   points: -20

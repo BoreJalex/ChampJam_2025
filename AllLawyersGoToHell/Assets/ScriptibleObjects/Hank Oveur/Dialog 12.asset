@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 12
   m_EditorClassIdentifier: 
-  testimonyText: 'And my lovely wife will remember me for when we went to that fancy
-    restaurant!
-
-'
+  testimonyText: "And my lovely wife will remember me for when we went to that fancy
+    restaurant!\r"
   points: 5

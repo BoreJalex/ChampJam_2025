@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dialog 5
   m_EditorClassIdentifier: 
   testimonyText: "I\u2019m sure I\u2019m fine for rear-ending that \u201CBaby on
-    Board\u201D car too.\r\n"
+    Board\u201D car too.\r"
   points: -20

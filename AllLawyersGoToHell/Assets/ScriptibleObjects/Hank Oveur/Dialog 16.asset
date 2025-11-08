@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 16
   m_EditorClassIdentifier: 
-  testimonyText: "That wasn\u2019t a good night. I was in the bar way too long.\r\n"
+  testimonyText: "That wasn\u2019t a good night. I was in the bar way too long.\r"
   points: -10
