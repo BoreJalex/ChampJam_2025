@@ -60,7 +60,6 @@ public class BlockSpawnScript : MonoBehaviour
 		currentTexts++;
 
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
-		GetComponent<SpriteRenderer>().sprite = talkingSprite;
 
 		if (resetCo != null)
 			StopCoroutine(resetCo);
@@ -81,8 +80,17 @@ public class BlockSpawnScript : MonoBehaviour
 
 	IEnumerator TalkingCo()
 	{
-		yield return new WaitForSeconds(0.3f);
-		GetComponent<SpriteRenderer>().sprite = defaultSprite;
+		SpriteRenderer charSprite = GetComponent<SpriteRenderer>();
+
+		for (int x = 0; x < 5; x++)
+		{
+			charSprite.sprite = talkingSprite;
+			transform.position += new Vector3(0, .1f, 0);
+			yield return new WaitForSeconds(0.1f);
+			charSprite.sprite = defaultSprite;
+			transform.position -= new Vector3(0, .1f, 0);
+			yield return new WaitForSeconds(0.1f);
+		}
 	}
 }
 
