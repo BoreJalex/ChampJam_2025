@@ -15,6 +15,6 @@ public class NewspaperScirpt : MonoBehaviour
 	IEnumerator moveToTutorial()
     {
         yield return new WaitForSeconds(7.5f);
-        GameManager.Instance.LoadPlayScene(0);
+        GameManager.Instance.LoadScene("TutorialScene");
     }
 }
