@@ -36,7 +36,7 @@ public class PlayerScript : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			currentBox.GetComponent<BoxScript>().stamped = true;
-			currentBox.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = 3;
+			currentBox.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 3;
 
 			GetComponent<SpriteRenderer>().sprite = approveSprite;
             transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);

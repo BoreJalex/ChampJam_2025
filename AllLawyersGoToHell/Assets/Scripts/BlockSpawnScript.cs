@@ -27,9 +27,12 @@ public class BlockSpawnScript : MonoBehaviour
 	[HideInInspector] public bool allTextsUsed = false;
 
 	// Sprite Tracking
+	[Header("Sprites")]
 	[SerializeField] private Sprite defaultSprite;
 	[SerializeField] private Sprite talkingSprite;
-	private Coroutine resetCo = null;
+	[SerializeField] public Sprite defaultBlock;
+    [SerializeField] public Sprite outlineBlock;
+    private Coroutine resetCo = null;
 
 	private void Start()
 	{
@@ -102,7 +105,7 @@ public class BoxScript : MonoBehaviour
 	private float _fallSpeed;
 	private PlayerScript _pScript;
 	private TestimonyObject _blockData;
-	private SpriteRenderer _outlineRend;
+	private SpriteRenderer _blockRend;
 	private BlockSpawnScript _bScript;
 
 	// Values
@@ -116,9 +119,9 @@ public class BoxScript : MonoBehaviour
 		_pScript = bScript.pScript;
 		_blockData = blockData;
 		
-		_outlineRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		_blockRend = GetComponent<SpriteRenderer>();
 
-		transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = blockData.testimonyText;
+		transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = blockData.testimonyText;
 	}
 
 	private void Update()
@@ -131,11 +134,11 @@ public class BoxScript : MonoBehaviour
 
 		// Visuals
 		if (_pScript.currentBox != null)
-			if(_pScript.currentBox == gameObject)
-				_outlineRend.color = Color.red;
+			if (_pScript.currentBox == gameObject)
+				_blockRend.sprite = _bScript.outlineBlock;
 			else
-				_outlineRend.color = Color.black;
-	}
+                _blockRend.sprite = _bScript.defaultBlock;
+    }
 
 	private void OnDestroy()
 	{

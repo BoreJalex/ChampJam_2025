@@ -744,6 +744,8 @@ MonoBehaviour:
   allTextsUsed: 0
   defaultSprite: {fileID: 298028974, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
   talkingSprite: {fileID: 1989153549, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
+  defaultBlock: {fileID: 21300000, guid: 95d70c9c23d7b1640966aa2ddae6c125, type: 3}
+  outlineBlock: {fileID: 21300000, guid: 0367bab3104bac5488b056cb8a560922, type: 3}
 --- !u!1 &950328308
 GameObject:
   m_ObjectHideFlags: 0
