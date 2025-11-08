@@ -49,6 +49,8 @@ public class BlockSpawnScript : MonoBehaviour
 
 		_characterSprite = GetComponent<SpriteRenderer>();
 		_characterSprite.sprite = _characterSprites[_currentInduvidual * 2];
+
+		GameManager.Instance.musicShouldPlay = true;
 	}
 
 	private void Update()
