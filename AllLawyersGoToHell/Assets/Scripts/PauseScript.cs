@@ -35,4 +35,11 @@ public class PauseScript : MonoBehaviour
             pauseMenuUI.SetActive(false);
         }
     }
+
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1f; // Reset time scale before returning to menu
+        isPaused = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
 }
