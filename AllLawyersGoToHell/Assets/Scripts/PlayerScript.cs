@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -16,6 +17,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Sprite approveSprite;
 	private Coroutine resetCo = null;
 
+	// Sounds
+	[SerializeField] private AudioClip stamp;
+	[SerializeField] private AudioClip[] Scoffs;
+	[SerializeField] private AudioClip buttonSwap;
+
     private void Update()
 	{
 		if (currentBox == null && _bScript.blockList.Count > 0)
@@ -26,21 +32,36 @@ public class PlayerScript : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			if ((currentIndex + 1) < _bScript.blockList.Count)
+			{
 				currentBox = _bScript.blockList[currentIndex + 1];
+
+				float randomPitch = UnityEngine.Random.Range(.8f, 1.2f);
+				GameManager.Instance.PlaySound(buttonSwap, randomPitch);
+			}
 		}
 		if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
 			if ((currentIndex - 1) >= 0)
+			{
 				currentBox = _bScript.blockList[currentIndex - 1];
+
+				float randomPitch = UnityEngine.Random.Range(.8f, 1.2f);
+				GameManager.Instance.PlaySound(buttonSwap, randomPitch);
+			}
 		}
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
+			if (currentBox.GetComponent<BoxScript>().stamped == true) return;
+
 			currentBox.GetComponent<BoxScript>().stamped = true;
 			currentBox.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 3;
 
 			GetComponent<SpriteRenderer>().sprite = approveSprite;
             transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             transform.position = new Vector3(-4.07f, -2.32f, 0);
+
+			float randomPitch = UnityEngine.Random.Range(.8f, 1.2f);
+			GameManager.Instance.PlaySound(stamp, randomPitch);
 
 			if (resetCo != null)
 				StopCoroutine(resetCo);
@@ -57,6 +78,10 @@ public class PlayerScript : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = pointingSprite;
                 transform.localScale = new Vector3(0.38f, 0.38f, 0.38f);
                 transform.position = new Vector3(-2.84f, -2.23f, 0);
+
+				int randomChoice = UnityEngine.Random.Range(0, 3);
+				float randomPitch = UnityEngine.Random.Range(.6f, 1f);
+				GameManager.Instance.PlaySound(Scoffs[randomChoice], randomPitch);
 
 				if (resetCo != null)
 					StopCoroutine(resetCo);

@@ -37,14 +37,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Adding audioSources
         sources = new AudioSource[audioSourceCount];
         for (int i = 0; i < audioSourceCount; i++)
         {
-            GameObject go = new GameObject("AudioSource_" + i);  // temporary child object
-            go.transform.SetParent(transform);                   // parent it to GameManager
-            AudioSource source = go.AddComponent<AudioSource>(); // add AudioSource component
-            source.playOnAwake = false;                          // prevent auto-play
+            GameObject aSource = new GameObject("AudioSource_" + i);  
+            aSource.transform.SetParent(transform);                   
+            AudioSource source = aSource.AddComponent<AudioSource>(); 
+            source.playOnAwake = false;                          
             sources[i] = source;
         }
 
@@ -101,10 +100,8 @@ public class GameManager : MonoBehaviour
         //AudioListener.volume = volume;
     }
 
-    // Plays sounds
     public void PlaySound(AudioClip clip, float minPitch = 0.8f, float maxPitch = 1.2f, float volume = 1f)
     {
-        // Find a free audio source
         AudioSource source = null;
         foreach (var s in sources)
         {
@@ -114,12 +111,10 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        if (source == null) source = sources[0]; // fallback if all busy
+        if (source == null) source = sources[0];
 
-        // Randomize pitch
         source.pitch = UnityEngine.Random.Range(minPitch, maxPitch);
 
-        // Play with volume edited as needed
         source.PlayOneShot(clip, volume * volumeLevel);
     }
 
