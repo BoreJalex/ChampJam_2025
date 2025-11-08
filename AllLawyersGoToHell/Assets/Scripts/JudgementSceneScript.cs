@@ -86,14 +86,17 @@ public class JudgementSceneScript : MonoBehaviour
 				case -40:
 					GameObject VeryEvil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					VeryEvil.transform.localScale *= 2;
-					break;
+                    VeryEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case -20:
 					GameObject QuiteEvil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					QuiteEvil.transform.localScale *= 1.5f;
-					break;
+                    QuiteEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case -10:
 					GameObject Evil = Instantiate(evilSquare, randomRight, Quaternion.identity);
-					break;
+                    Evil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+                    break;
 				case 5:
 					GameObject Good = Instantiate(goodSquare, randomLeft, Quaternion.identity);
 					Good.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
