@@ -653,8 +653,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 7244242693418431143, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1534,8 +1534,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Restart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 7244242693418431143, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2482,8 +2482,6 @@ MonoBehaviour:
   rightSpawn: {fileID: 1735967351}
   goodSquare: {fileID: 7458460532692517565, guid: de305b72a7088be488e2f310de95fcf6, type: 3}
   evilSquare: {fileID: 3898680486222515564, guid: 388a952ed78930747892abd32e77aff0, type: 3}
-  _canvas: {fileID: 1166391358}
-  _continueButton: {fileID: 130056383}
   _rotatingPart: {fileID: 167169937}
   _leftHolder: {fileID: 1517903080}
   _rightHolder: {fileID: 591917113}
@@ -2499,8 +2497,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4ae68593e9e0f9948bdb7aca989b0589, type: 3}
   trumpet: {fileID: 8300000, guid: 310f7519c41e8dd419f24800ab7aa3a3, type: 3}
   sentenceToHeaven: {fileID: 8300000, guid: 3ee10d8bc0bf10c4faab3c5d7f8b98a6, type: 3}
-  sentenceToHell: {fileID: 8300000, guid: 46ceb418d5668d24fb0cbbc415e6ca9d, type: 3}
-  fireEruption: {fileID: 0}
+  sentenceToHell: {fileID: 8300000, guid: b07883757e25b4141a507e8097ebeee0, type: 3}
+  fireEruption: {fileID: 8300000, guid: 46ceb418d5668d24fb0cbbc415e6ca9d, type: 3}
   _theJudged: {fileID: 1691322401}
   _theCircle: {fileID: 341952946}
   possibleSprites:
@@ -2747,8 +2745,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 7244242693418431143, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
