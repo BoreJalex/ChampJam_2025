@@ -8,6 +8,7 @@ public class BlockSpawnScript : MonoBehaviour
 	[SerializeField] private Transform _spawnPoint;
 	[SerializeField] private GameObject _blockPrefab;
 	[SerializeField] private PlayerScript _pScript;
+	[SerializeField] private LogOfTextObject _textLog;
 
 	// Block Related Stuff
 	public List<GameObject> blockList = new List<GameObject>();
@@ -55,7 +56,7 @@ public class BoxScript : MonoBehaviour
 	private SpriteRenderer _outlineRend; 
 
 	// Values
-	public bool _stamped = false;
+	public bool stamped = false;
 
 	public void Initialize(float fallSpeed, PlayerScript pScript)
 	{
@@ -77,6 +78,6 @@ public class BoxScript : MonoBehaviour
 		if (_pScript.currentBox != null && _pScript.currentBox == gameObject)
 			_outlineRend.color = Color.red;
 		else
-			_outlineRend.color = Color.green;
+			_outlineRend.color = Color.black;
 	}
 }

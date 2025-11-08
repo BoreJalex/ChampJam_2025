@@ -27,12 +27,15 @@ public class PlayerScript : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			currentBox.GetComponent<BoxScript>()._stamped = true;
+			currentBox.GetComponent<BoxScript>().stamped = true;
+			currentBox.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = 3;
 		}
 		if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			if (currentIndex != -1)
 			{
+				if (currentBox.GetComponent<BoxScript>().stamped) return;
+
 				int wasIndex = currentIndex;
 				_bScript.blockList.RemoveAt(currentIndex);
 
@@ -48,11 +51,21 @@ public class PlayerScript : MonoBehaviour
 				rb.AddForce(boxDirection, ForceMode2D.Impulse);
 				rb.gravityScale = 5;
 				rb.AddTorque(rotationForce);
-				rend.sortingOrder = 99;
+				rend.sortingOrder = 2;
 
 				// Setting next highlighted box
 				if (_bScript.blockList.Count >= 1)
-					currentBox = _bScript.blockList[0];
+					if (_bScript.blockList.Count > currentIndex)
+						currentBox = _bScript.blockList[wasIndex];
+					else if (_bScript.blockList.Count > 1)
+					{
+						if (_bScript.blockList[wasIndex - 1] != null)
+							currentBox = _bScript.blockList[wasIndex - 1];
+						else
+							currentBox = _bScript.blockList[0];
+					}
+					else
+						currentBox = _bScript.blockList[0];
 			}
 		}
 	}
