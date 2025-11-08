@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afb398295ab1a3448c021cdd3e7544d, type: 3}
   m_Name: Dialog 17
   m_EditorClassIdentifier: 
-  testimonyText: "I gave out gifts during the holidays\r."
+  testimonyText: I gave out gifts during the holidays.
   points: 10
