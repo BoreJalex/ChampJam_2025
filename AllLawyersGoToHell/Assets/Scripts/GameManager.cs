@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    GameObject optionsScreen;
-    GameObject mainScreen;
+    GameObject optionsScreenUI;
+    GameObject mainScreenUI;
 
 	// Trackers
 	private bool isOptionsOpen = false;
@@ -28,10 +29,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            optionsScreen = GameObject.Find("OptionsMenu");
-            mainScreen = GameObject.Find("StartScreen");
-            if(optionsScreen != null)
-                optionsScreen.SetActive(false);
+            SceneManager.sceneLoaded += OnSceneLoaded;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -52,6 +50,18 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void FindReferences()
+    {
+        if (SceneManager.GetActiveScene().name == "StartScreen")
+        {
+            Debug.Log("Called");
+            optionsScreenUI = GameObject.Find("OptionsMenu");
+            mainScreenUI = GameObject.Find("StartScreen");
+            if (optionsScreenUI != null)
+                optionsScreenUI.SetActive(false);
+        }
+    }
+
     public void LoadScene(string sceneName)
     {
         GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel(sceneName);
@@ -68,15 +78,15 @@ public class GameManager : MonoBehaviour
         {
             // Close options menu
             isOptionsOpen = false;
-            optionsScreen.SetActive(false);
-            mainScreen.SetActive(true);
+            optionsScreenUI.SetActive(false);
+            mainScreenUI.SetActive(true);
         }
         else
         {
             // Open options menu
             isOptionsOpen = true;
-            optionsScreen.SetActive(true);
-            mainScreen.SetActive(false);
+            optionsScreenUI.SetActive(true);
+            mainScreenUI.SetActive(false);
         }
     }
 
@@ -111,5 +121,11 @@ public class GameManager : MonoBehaviour
 
         // Play with volume edited as needed
         source.PlayOneShot(clip, volume * volumeLevel);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        isOptionsOpen = false;
+        FindReferences();
     }
 }
