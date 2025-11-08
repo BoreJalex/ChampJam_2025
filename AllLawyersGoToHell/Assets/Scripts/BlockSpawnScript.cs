@@ -20,10 +20,11 @@ public class BlockSpawnScript : MonoBehaviour
 	// Timer
 	private float _timeSinceSpawn;
 
-	// Number tracking
+	// Text tracking
 	private int textsUsed = 0;
+	public bool allTextsUsed = false;
 
-	private void Start()
+    private void Start()
 	{
 		boxFallSpeed = boxFallSpeed * GameManager.Instance.speedMultiplier;
 	}
@@ -38,7 +39,7 @@ public class BlockSpawnScript : MonoBehaviour
 			SpawnBlock();
 		}
 		else if(_textLog.texts.Length <= textsUsed)
-			GameManager.Instance.GoToJudgementScene();
+			allTextsUsed = true;
     }
 
 	void SpawnBlock()
@@ -142,5 +143,8 @@ public class BoxScript : MonoBehaviour
 				GameManager.Instance.answerOutcomes.Add(_blockData.points * 10);
 			}
 		}
-	}
+
+		if(_bScript.allTextsUsed)
+			GameManager.Instance.GoToJudgementScene();
+    }
 }
