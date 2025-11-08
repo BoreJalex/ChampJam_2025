@@ -52,9 +52,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void loadScene(string sceneName)
+    public void LoadScene(string sceneName)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel(sceneName);
     }
 
     public void quitGame()
@@ -89,11 +89,6 @@ public class GameManager : MonoBehaviour
     {
         volumeLevel = vol;
         //AudioListener.volume = volume;
-    }
-
-    public void GoToJudgementScene()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     // Plays sounds

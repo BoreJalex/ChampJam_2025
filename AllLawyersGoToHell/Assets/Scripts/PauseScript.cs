@@ -6,7 +6,7 @@ public class PauseScript : MonoBehaviour
 {
     private bool isPaused = false;
     public GameObject pauseMenuUI;
-
+    
     private void Start()
     {
         pauseMenuUI = GameObject.Find("PauseMenuUI");
@@ -40,6 +40,6 @@ public class PauseScript : MonoBehaviour
     {
         Time.timeScale = 1f; // Reset time scale before returning to menu
         isPaused = false;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel("MainMenu");
     }
 }
