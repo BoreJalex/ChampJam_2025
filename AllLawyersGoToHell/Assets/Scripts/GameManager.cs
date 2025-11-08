@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "StartScreen")
         {
-            Debug.Log("Called");
             optionsScreenUI = GameObject.Find("OptionsMenu");
             mainScreenUI = GameObject.Find("StartScreen");
             if (optionsScreenUI != null)
