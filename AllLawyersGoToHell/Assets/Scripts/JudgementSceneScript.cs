@@ -49,7 +49,7 @@ public class JudgementSceneScript : MonoBehaviour
 	{
 		int choice = 0;
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 
 		while (!_decided)
 		{
@@ -72,7 +72,7 @@ public class JudgementSceneScript : MonoBehaviour
 		Vector3 randomLeft;
 		Vector3 randomRight;
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 
 		_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[1];
 
@@ -151,7 +151,7 @@ public class JudgementSceneScript : MonoBehaviour
 			GameManager.Instance.PlaySound(sentenceToHeaven);
 			yield return new WaitForSeconds(3.25f);
 			_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[(GameManager.Instance.currentPerson * 2) + 2];
-			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[1];
+			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[0];
 			GameManager.Instance.PlaySound(trumpet);
 		}
 		else
@@ -165,6 +165,14 @@ public class JudgementSceneScript : MonoBehaviour
 
 		yield return new WaitForSeconds(3);
 
-		GameManager.Instance.LoadScene("StartScreen");
+		// Reseting points
+		GameManager.Instance.currentPoints = 0;
+		GameManager.Instance.answerOutcomes.Clear();
+
+		// Loading next scene
+		if (GameManager.Instance.currentPerson <= 1)
+			GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson + 1);
+		else
+			GameManager.Instance.LoadScene("StartScreen");
 	}
 }
