@@ -52,12 +52,17 @@ public class BoxScript : MonoBehaviour
 	// Cache
 	private float _fallSpeed;
 	private PlayerScript _pScript;
-	
+	private SpriteRenderer _outlineRend; 
+
+	// Values
+	public bool _stamped = false;
 
 	public void Initialize(float fallSpeed, PlayerScript pScript)
 	{
 		_fallSpeed = fallSpeed;
 		_pScript = pScript;
+
+		_outlineRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
 	}
 
 	private void Update()
@@ -70,8 +75,8 @@ public class BoxScript : MonoBehaviour
 
 		// Visuals
 		if (_pScript.currentBox != null && _pScript.currentBox == gameObject)
-			GetComponent<SpriteRenderer>().color = Color.red;
+			_outlineRend.color = Color.red;
 		else
-			GetComponent<SpriteRenderer>().color = Color.white;
+			_outlineRend.color = Color.green;
 	}
 }

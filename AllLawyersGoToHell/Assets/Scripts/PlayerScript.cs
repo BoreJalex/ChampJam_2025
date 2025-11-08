@@ -25,7 +25,11 @@ public class PlayerScript : MonoBehaviour
 			if ((currentIndex - 1) >= 0)
 				currentBox = _bScript.blockList[currentIndex - 1];
 		}
-		if(Input.GetKeyDown(KeyCode.RightArrow))
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			currentBox.GetComponent<BoxScript>()._stamped = true;
+		}
+		if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			if (currentIndex != -1)
 			{
@@ -33,15 +37,17 @@ public class PlayerScript : MonoBehaviour
 				_bScript.blockList.RemoveAt(currentIndex);
 
 				// Random Values for speed and rotation
-
+				float heightForce = Random.Range(10f, 20f);
+				float sidewaysForce = Random.Range(10f, 20f);
+				float rotationForce = Random.Range(-80f, -120f);
 
 				// Chucking
 				Rigidbody2D rb = currentBox.GetComponent<Rigidbody2D>();
 				SpriteRenderer rend = currentBox.GetComponent<SpriteRenderer>();
-				Vector3 boxDirection = new Vector3(15, 15, 0);
+				Vector3 boxDirection = new Vector3(sidewaysForce, heightForce, 0);
 				rb.AddForce(boxDirection, ForceMode2D.Impulse);
 				rb.gravityScale = 5;
-				rb.AddTorque(-100);
+				rb.AddTorque(rotationForce);
 				rend.sortingOrder = 99;
 
 				// Setting next highlighted box
