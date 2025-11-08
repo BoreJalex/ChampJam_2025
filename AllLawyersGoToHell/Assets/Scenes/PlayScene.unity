@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 908657388}
   - component: {fileID: 908657390}
   m_Layer: 0
-  m_Name: LukeTulern
+  m_Name: JudgedInduvidual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,14 +735,20 @@ MonoBehaviour:
   _spawnPoint: {fileID: 1405920685}
   _blockPrefab: {fileID: 7903051034932500526, guid: 926290fb6bd5aa24ca3ba4c6c4605b3d, type: 3}
   pScript: {fileID: 1627434752}
-  _textLog: {fileID: 11400000, guid: 6be0d5268c6749b4bad9efe60a73edd4, type: 2}
+  _textLogs:
+  - {fileID: 11400000, guid: 6be0d5268c6749b4bad9efe60a73edd4, type: 2}
+  - {fileID: 11400000, guid: 28cdf46969f522f41bd6e103f842d6ec, type: 2}
+  - {fileID: 11400000, guid: 89aafe3ba4d9c6e4ebb38994fedb5c46, type: 2}
   blockList: []
   _blockSpawnRate: 1
   boxFallSpeed: 1.25
   currentTexts: 0
   allTextsUsed: 0
-  defaultSprite: {fileID: 298028974, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
-  talkingSprite: {fileID: 1989153549, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
+  _characterSprites:
+  - {fileID: 298028974, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
+  - {fileID: 1989153549, guid: 7c546e6218276e44793df520f0bbfcff, type: 3}
+  - {fileID: -1328558308, guid: e1e4a0f653004fb4e9437aa6e3f19fbd, type: 3}
+  - {fileID: -954284601, guid: e1e4a0f653004fb4e9437aa6e3f19fbd, type: 3}
   defaultBlock: {fileID: 21300000, guid: 95d70c9c23d7b1640966aa2ddae6c125, type: 3}
   outlineBlock: {fileID: 21300000, guid: 0367bab3104bac5488b056cb8a560922, type: 3}
 --- !u!1 &950328308

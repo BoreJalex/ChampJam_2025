@@ -10,10 +10,12 @@ public class BlockSpawnScript : MonoBehaviour
 	[SerializeField] private Transform _spawnPoint;
 	[SerializeField] private GameObject _blockPrefab;
 	public PlayerScript pScript;
-	[SerializeField] private LogOfTextObject _textLog;
+	[SerializeField] private LogOfTextObject[] _textLogs;
+	private int _currentInduvidual = 0;
+	SpriteRenderer _characterSprite;
 
 	// Block Related Stuff
-	public List<GameObject> blockList = new List<GameObject>();
+	[HideInInspector] public List<GameObject> blockList = new List<GameObject>();
 	[SerializeField] private float _blockSpawnRate;
 	public float boxFallSpeed;
 
@@ -28,8 +30,7 @@ public class BlockSpawnScript : MonoBehaviour
 
 	// Sprite Tracking
 	[Header("Sprites")]
-	[SerializeField] private Sprite defaultSprite;
-	[SerializeField] private Sprite talkingSprite;
+	[SerializeField] private Sprite[] _characterSprites;
 	[SerializeField] public Sprite defaultBlock;
     [SerializeField] public Sprite outlineBlock;
     private Coroutine resetCo = null;
@@ -40,24 +41,29 @@ public class BlockSpawnScript : MonoBehaviour
 			GameManager.Instance.speedMultiplier = 1;
 
 		boxFallSpeed *= GameManager.Instance.speedMultiplier;
+
+		_currentInduvidual = GameManager.Instance.currentPerson;
+
+		_characterSprite = GetComponent<SpriteRenderer>();
+		_characterSprite.sprite = _characterSprites[_currentInduvidual * 2];
 	}
 
 	private void Update()
 	{
 		_timeSinceSpawn += Time.deltaTime * _blockSpawnRate * GameManager.Instance.speedMultiplier;
 
-		if(_timeSinceSpawn >= 2 && _textLog.texts.Length > _textsUsed)
+		if(_timeSinceSpawn >= 2 && _textLogs[_currentInduvidual].texts.Length > _textsUsed)
 		{
 			_timeSinceSpawn = 0;
 			SpawnBlock();
 		}
-		else if(_textLog.texts.Length <= _textsUsed)
+		else if(_textLogs[_currentInduvidual].texts.Length <= _textsUsed)
 			allTextsUsed = true;
 	}
 
 	void SpawnBlock()
 	{
-		TestimonyObject blockData = _textLog.texts[_currentChoice];
+		TestimonyObject blockData = _textLogs[_currentInduvidual].texts[_currentChoice];
 		_currentChoice++;
 		_textsUsed++;
 		currentTexts++;
@@ -89,10 +95,10 @@ public class BlockSpawnScript : MonoBehaviour
 
 		for (int x = 0; x < yapAmount; x++)
 		{
-			charSprite.sprite = talkingSprite;
+			charSprite.sprite = _characterSprites[(_currentInduvidual * 2) + 1];
 			transform.position += new Vector3(0, .1f, 0);
 			yield return new WaitForSeconds(0.1f);
-			charSprite.sprite = defaultSprite;
+			charSprite.sprite = _characterSprites[_currentInduvidual * 2];
 			transform.position -= new Vector3(0, .1f, 0);
 			yield return new WaitForSeconds(0.1f);
 		}

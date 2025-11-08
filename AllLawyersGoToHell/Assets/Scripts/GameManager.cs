@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 	// Trackers
 	private bool isOptionsOpen = false;
     public int currentPoints;
+    public int currentPerson = 0;
 
 	// Variables
 	[HideInInspector] public float speedMultiplier = 1;
@@ -66,7 +67,13 @@ public class GameManager : MonoBehaviour
         GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel(sceneName);
     }
 
-    public void QuitGame()
+	public void LoadPlayScene(int judgedInduvidual)
+	{
+		currentPerson = judgedInduvidual;
+		GameObject.Find("LevelLoader").GetComponent<LevelLoaderScript>().LoadLevel("PlayScene");
+	}
+
+	public void QuitGame()
     {
         Application.Quit();
     }
