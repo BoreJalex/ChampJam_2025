@@ -9,9 +9,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     GameObject optionsScreen;
     GameObject mainScreen;
-    private bool isOptionsOpen = false;
-    public float speedMultiplier;
-    
+
+	// Trackers
+	private bool isOptionsOpen = false;
+    public int currentPoints;
+
+	// Variables
+	public float speedMultiplier = 1;
+    public List<int> answerOutcomes = new List<int>();
+
     private void Awake()
     {
         if (Instance == null)

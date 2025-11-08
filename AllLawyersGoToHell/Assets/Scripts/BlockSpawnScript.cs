@@ -21,20 +21,22 @@ public class BlockSpawnScript : MonoBehaviour
 	private float _timeSinceSpawn;
 
 	// Number tracking
-	[HideInInspector] public int points = 0;
 	private int textsUsed = 0;
+
+	private void Start()
+	{
+		boxFallSpeed = boxFallSpeed * GameManager.Instance.speedMultiplier;
+	}
 
 	private void Update()
 	{
-		_timeSinceSpawn += Time.deltaTime * _blockSpawnRate;
+		_timeSinceSpawn += Time.deltaTime * _blockSpawnRate * GameManager.Instance.speedMultiplier;
 
-		if(_timeSinceSpawn >= 2 &&  _textLog.texts.Length > textsUsed)
+		if(_timeSinceSpawn >= 2 && _textLog.texts.Length > textsUsed)
 		{
 			_timeSinceSpawn = 0;
 			SpawnBlock();
 		}
-
-		Debug.Log(points);
 	}
 
 	void SpawnBlock()
@@ -115,16 +117,28 @@ public class BoxScript : MonoBehaviour
 		if(_blockData.points < 0)
 		{
 			if (stamped)
-				_bScript.points += _blockData.points * 2;
-			else if(!removed)
-				_bScript.points += _blockData.points;
+			{
+				GameManager.Instance.currentPoints += _blockData.points * 2;
+				GameManager.Instance.answerOutcomes.Add(_blockData.points * 2);
+			}
+			else if (!removed)
+			{
+				GameManager.Instance.currentPoints += _blockData.points;
+				GameManager.Instance.answerOutcomes.Add(_blockData.points);
+			}
 		}
 		else
 		{
 			if (stamped)
-				_bScript.points += _blockData.points;
+			{
+				GameManager.Instance.currentPoints += _blockData.points;
+				GameManager.Instance.answerOutcomes.Add(_blockData.points);
+			}
 			else
-				_bScript.points -= _blockData.points;
+			{
+				GameManager.Instance.currentPoints -= _blockData.points;
+				GameManager.Instance.answerOutcomes.Add(_blockData.points * 10);
+			}
 		}
 	}
 }
