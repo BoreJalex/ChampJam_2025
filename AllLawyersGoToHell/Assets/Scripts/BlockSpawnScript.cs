@@ -21,24 +21,28 @@ public class BlockSpawnScript : MonoBehaviour
 	private float _timeSinceSpawn;
 
 	// Text tracking
-	private int textsUsed = 0;
+	private int _textsUsed = 0;
+	public int currentTexts = 0;
 	[HideInInspector] public bool allTextsUsed = false;
 
     private void Start()
 	{
 		boxFallSpeed *= GameManager.Instance.speedMultiplier;
+
+		if (GameManager.Instance.speedMultiplier == 0)
+			GameManager.Instance.speedMultiplier = 1;
 	}
 
 	private void Update()
 	{
 		_timeSinceSpawn += Time.deltaTime * _blockSpawnRate * GameManager.Instance.speedMultiplier;
 
-		if(_timeSinceSpawn >= 2 && _textLog.texts.Length > textsUsed)
+		if(_timeSinceSpawn >= 2 && _textLog.texts.Length > _textsUsed)
 		{
 			_timeSinceSpawn = 0;
 			SpawnBlock();
 		}
-		else if(_textLog.texts.Length <= textsUsed)
+		else if(_textLog.texts.Length <= _textsUsed)
 			allTextsUsed = true;
     }
 
@@ -53,7 +57,8 @@ public class BlockSpawnScript : MonoBehaviour
 			{
 				blockData = _textLog.texts[choice];
 				_textLog.texts[choice].used = true;
-				textsUsed++;
+				_textsUsed++;
+				currentTexts++;
 			}
 		}
 
@@ -116,6 +121,7 @@ public class BoxScript : MonoBehaviour
 	private void OnDestroy()
 	{
 		_blockData.used = false;
+		_bScript.currentTexts--;
 
 		if(_blockData.points < 0)
 		{
@@ -144,7 +150,7 @@ public class BoxScript : MonoBehaviour
 			}
 		}
 
-		if(_bScript.allTextsUsed)
+		if(_bScript.allTextsUsed && _bScript.currentTexts <= 1)
 			GameManager.Instance.GoToJudgementScene();
     }
 }

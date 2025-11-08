@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int currentPoints;
 
 	// Variables
-	public float speedMultiplier = 1;
+	[HideInInspector] public float speedMultiplier = 1;
     public List<int> answerOutcomes = new List<int>();
 
     private void Awake()
