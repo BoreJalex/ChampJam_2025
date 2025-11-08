@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 	{
         if (musicShouldPlay && _musicSource != null)
         {
-            if (SceneManager.GetActiveScene().Equals("JudgeScreen"))
+            if (SceneManager.GetActiveScene().name == ("JudgeScreen"))
             {
                 _musicSource.Stop();
                 musicShouldPlay = false;

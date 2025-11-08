@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class NewspaperScirpt : MonoBehaviour
 {
+	[SerializeField] private GameObject newspaper;
+
 	private void Start()
-	{
+	{ 
 		StartCoroutine(moveToTutorial());
 	}
 
