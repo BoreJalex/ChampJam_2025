@@ -9,20 +9,45 @@ public class PlayerScript : MonoBehaviour
 
 	// Trackers
 	[HideInInspector] public GameObject currentBox = null;
+	[HideInInspector] public int currentIndex = -1;
 
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.UpArrow))
+		currentIndex = _bScript.blockList.IndexOf(currentBox);
+
+		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
-			int currentIndex = _bScript.blockList.IndexOf(currentBox);
 			if ((currentIndex + 1) < _bScript.blockList.Count)
 				currentBox = _bScript.blockList[currentIndex + 1];
 		}
 		if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
-			int currentIndex = _bScript.blockList.IndexOf(currentBox);
 			if ((currentIndex - 1) >= 0)
 				currentBox = _bScript.blockList[currentIndex - 1];
+		}
+		if(Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			if (currentIndex != -1)
+			{
+				int wasIndex = currentIndex;
+				_bScript.blockList.RemoveAt(currentIndex);
+
+				// Random Values for speed and rotation
+
+
+				// Chucking
+				Rigidbody2D rb = currentBox.GetComponent<Rigidbody2D>();
+				SpriteRenderer rend = currentBox.GetComponent<SpriteRenderer>();
+				Vector3 boxDirection = new Vector3(15, 15, 0);
+				rb.AddForce(boxDirection, ForceMode2D.Impulse);
+				rb.gravityScale = 5;
+				rb.AddTorque(-100);
+				rend.sortingOrder = 99;
+
+				// Setting next highlighted box
+				if (_bScript.blockList.Count >= 1)
+					currentBox = _bScript.blockList[0];
+			}
 		}
 	}
 }
