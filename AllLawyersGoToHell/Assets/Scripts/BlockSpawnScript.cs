@@ -37,7 +37,9 @@ public class BlockSpawnScript : MonoBehaviour
 			_timeSinceSpawn = 0;
 			SpawnBlock();
 		}
-	}
+		else if(_textLog.texts.Length <= textsUsed)
+			GameManager.Instance.GoToJudgementScene();
+    }
 
 	void SpawnBlock()
 	{

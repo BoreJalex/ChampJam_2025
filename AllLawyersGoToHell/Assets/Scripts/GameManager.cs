@@ -67,4 +67,9 @@ public class GameManager : MonoBehaviour
     {
         speedMultiplier = speed;
     }
+
+    public void GoToJudgementScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+    }
 }
