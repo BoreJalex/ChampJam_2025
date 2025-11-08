@@ -8,6 +8,7 @@ public class BlockSpawnScript : MonoBehaviour
 	[SerializeField] private Transform _spawnPoint;
 	[SerializeField] private GameObject _blockPrefab;
 	[SerializeField] private PlayerScript _pScript;
+	[SerializeField] private LogOfTextObject _textLog;
 
 	// Block Related Stuff
 	public List<GameObject> blockList = new List<GameObject>();
