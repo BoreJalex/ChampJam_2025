@@ -25,25 +25,29 @@ public class JudgementSceneScript : MonoBehaviour
 			switch (GameManager.Instance.answerOutcomes[_thingsSpawned])
 			{
 				case -40:
-					Instantiate(evilSquare, rightSpawn.position, Quaternion.identity);
+					GameObject VeryEvil = Instantiate(evilSquare, rightSpawn.position, Quaternion.identity);
+					VeryEvil.transform.localScale *= 2;
 					break;
 				case -20:
-					Instantiate(evilSquare, rightSpawn.position, Quaternion.identity);
+					GameObject QuiteEvil = Instantiate(evilSquare, rightSpawn.position, Quaternion.identity);
+					QuiteEvil.transform.localScale *= 1.5f;
 					break;
 				case -10:
-					Instantiate(evilSquare, rightSpawn.position, Quaternion.identity);
+					GameObject Evil = Instantiate(evilSquare, rightSpawn.position, Quaternion.identity);
 					break;
 				case 5:
-					Instantiate(goodSquare, leftSpawn.position, Quaternion.identity);
+					GameObject Good = Instantiate(goodSquare, leftSpawn.position, Quaternion.identity);
 					break;
 				case 10:
-					Instantiate(goodSquare, leftSpawn.position, Quaternion.identity);
+					GameObject Great = Instantiate(goodSquare, leftSpawn.position, Quaternion.identity);
+					Great.transform.localScale *= 1.5f;
 					break;
 				case 50:
-					Instantiate(goodSquare, rightSpawn.position, Quaternion.identity);
+					GameObject ShouldBeGood = Instantiate(goodSquare, rightSpawn.position, Quaternion.identity);
 					break;
 				case 100:
-					Instantiate(goodSquare, rightSpawn.position, Quaternion.identity);
+					GameObject ShouldBeGreat = Instantiate(goodSquare, rightSpawn.position, Quaternion.identity);
+					ShouldBeGreat.transform.localScale *= 1.5f;
 					break;
 			}
 
