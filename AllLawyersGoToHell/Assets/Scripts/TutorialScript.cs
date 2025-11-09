@@ -93,7 +93,7 @@ public class TutorialScript : MonoBehaviour
             currentBox.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -3;
 
             float randomPitch = UnityEngine.Random.Range(.8f, 1.2f);
-            //GameManager.Instance.PlaySound(stamp, randomPitch);
+            GameManager.Instance.PlaySound(stamp, randomPitch);
 
             if (currentBox == topBlock)
             {

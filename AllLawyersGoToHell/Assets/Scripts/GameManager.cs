@@ -71,7 +71,8 @@ public class GameManager : MonoBehaviour
             {
                 if (_musicPlaying == false)
                 {
-                    _musicSource.PlayOneShot(music, 1);
+					_musicSource.volume = .3f;
+					_musicSource.PlayOneShot(music, 1);
                     musicShouldPlay = false;
                     _musicPlaying = true;
                 }
