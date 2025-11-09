@@ -80,13 +80,15 @@ public class BlockSpawnScript : MonoBehaviour
 			allTextsUsed = true;
 	}
 
-	void SpawnBlock()
+	void SpawnBlock() // Spawning text blocks
 	{
+		// Making the current block and ++'ing all the things we need to
 		TestimonyObject blockData = _textLogs[_currentInduvidual].texts[_currentChoice];
 		_currentChoice++;
 		_textsUsed++;
 		currentTexts++;
 
+		// Talking sounds
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
 		int choice = Random.Range(GameManager.Instance.currentPerson, GameManager.Instance.currentPerson + 3);
 		GameManager.Instance.PlaySound(_soundLogs[choice]);
@@ -108,7 +110,7 @@ public class BlockSpawnScript : MonoBehaviour
 		block.GetComponent<BoxScript>().Initialize(this, blockData);
 	}
 
-	IEnumerator TalkingCo(TestimonyObject blockData)
+	IEnumerator TalkingCo(TestimonyObject blockData) // Make a small talking animation
 	{
 		SpriteRenderer charSprite = GetComponent<SpriteRenderer>();
 
@@ -124,15 +126,9 @@ public class BlockSpawnScript : MonoBehaviour
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
-
-	IEnumerator PlayAgain(float time)
-	{
-		yield return new WaitForSeconds(time);
-		GameManager.Instance.PlaySound(_soundLogs[_currentInduvidual]);
-	}
 }
 
-public class BoxScript : MonoBehaviour
+public class BoxScript : MonoBehaviour // The Script put on the text boxes
 {
 	// Cache
 	private float _fallSpeed;
@@ -177,12 +173,13 @@ public class BoxScript : MonoBehaviour
 	{
 		_bScript.currentTexts--;
 
-		if (_bScript.blockList.IndexOf(gameObject) == _bScript.blockList.IndexOf(_pScript.currentBox))
+		if (_bScript.blockList.IndexOf(gameObject) == _bScript.blockList.IndexOf(_pScript.currentBox)) // Removing this box from the list
 		{
 			_bScript.blockList.Remove(gameObject);
 			_pScript.currentBox = null;
 		}
 
+		// All the stuff for point calc
 		if(_blockData.points < 0)
 		{
 			if (stamped)
