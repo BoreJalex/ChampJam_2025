@@ -52,6 +52,7 @@ public class DapScript : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         textLine3.SetActive(true);
-
+        yield return new WaitForSeconds(10);
+        GameManager.Instance.LoadScene("StartScreen");
     }
 }
