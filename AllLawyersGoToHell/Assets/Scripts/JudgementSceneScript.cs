@@ -151,7 +151,7 @@ public class JudgementSceneScript : MonoBehaviour
 
 		_decided = true;
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 
 		if (GameManager.Instance.currentPoints > 0) // Win sounds, and visual
 		{
