@@ -183,7 +183,7 @@ MonoBehaviour:
   m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 6225997524278998463, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_sharedMaterial: {fileID: -8246490003276863209, guid: 4de792423afb5274993de57045996719, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -538,7 +538,7 @@ MonoBehaviour:
     to approve them by pressing the Spacebar.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 6225997524278998463, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_sharedMaterial: {fileID: -8246490003276863209, guid: 4de792423afb5274993de57045996719, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -688,7 +688,7 @@ MonoBehaviour:
   blockPrefab: {fileID: 7903051034932500526, guid: 926290fb6bd5aa24ca3ba4c6c4605b3d, type: 3}
   currentBox: {fileID: 0}
   currentIndex: -1
-  stamp: {fileID: 8300000, guid: e4bd2372405047f40a66e37137e34451, type: 3}
+  stamp: {fileID: 8300000, guid: d5e6f61649348b7478875159647a4822, type: 3}
   buttonSwap: {fileID: 8300000, guid: 1b555bd59b011a947bf607e93b9ea459, type: 3}
   defaultBlock: {fileID: 21300000, guid: 95d70c9c23d7b1640966aa2ddae6c125, type: 3}
   outlineBlock: {fileID: 21300000, guid: 0367bab3104bac5488b056cb8a560922, type: 3}
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 6225997524278998463, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_sharedMaterial: {fileID: -8246490003276863209, guid: 4de792423afb5274993de57045996719, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_text: 'Controls:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 6225997524278998463, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_sharedMaterial: {fileID: -8246490003276863209, guid: 4de792423afb5274993de57045996719, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1539,7 +1539,7 @@ MonoBehaviour:
     enough good people to redeem yourself and reach heaven!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de792423afb5274993de57045996719, type: 2}
-  m_sharedMaterial: {fileID: 6225997524278998463, guid: 4de792423afb5274993de57045996719, type: 2}
+  m_sharedMaterial: {fileID: -8246490003276863209, guid: 4de792423afb5274993de57045996719, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

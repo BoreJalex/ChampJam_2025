@@ -114,11 +114,13 @@ public class JudgementSceneScript : MonoBehaviour
 				case 50:
 					GameObject ShouldBeGood = Instantiate(goodSquare, randomRight, Quaternion.identity);
 					ShouldBeGood.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					ShouldBeGood.GetComponent<SpriteRenderer>().color = Color.gray;
 					break;
 				case 100:
 					GameObject ShouldBeGreat = Instantiate(goodSquare, randomRight, Quaternion.identity);
 					ShouldBeGreat.transform.localScale *= 1.5f;
 					ShouldBeGreat.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					ShouldBeGreat.GetComponent<SpriteRenderer>().color = Color.gray;
 					break;
 			}
 
