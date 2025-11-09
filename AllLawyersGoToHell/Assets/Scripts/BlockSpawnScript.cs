@@ -32,6 +32,7 @@ public class BlockSpawnScript : MonoBehaviour
 	[SerializeField] private Sprite[] _characterSprites;
 	[SerializeField] public Sprite defaultBlock;
     [SerializeField] public Sprite outlineBlock;
+	[SerializeField] public TextMeshProUGUI characterPlaque;
     private Coroutine resetCo = null;
 
 	// Sound Tracking
@@ -49,6 +50,20 @@ public class BlockSpawnScript : MonoBehaviour
 
 		_characterSprite = GetComponent<SpriteRenderer>();
 		_characterSprite.sprite = _characterSprites[_currentInduvidual * 2];
+		string name = "Debug";
+		switch (_currentInduvidual)
+		{
+			case 0:
+			name = "Luke Tulern";
+			break;
+			case 1:
+			name = "Sienna Lot";
+			break;
+			case 2:
+			name = "Hank Oveur";
+			break;
+		}
+		characterPlaque.text = name;
 
 		GameManager.Instance.musicShouldPlay = true;
 	}
