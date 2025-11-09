@@ -117,7 +117,7 @@ public class BlockSpawnScript : MonoBehaviour
 	IEnumerator TalkingCo(TestimonyObject blockData) // Make a small talking animation
 	{
 		SpriteRenderer charSprite = GetComponent<SpriteRenderer>();
-        startTransform = transform.position;
+        transform.position = startTransform;
         int yapAmount = blockData.testimonyText.Length / 5;
 
 		for (int x = 0; x < yapAmount; x++)
