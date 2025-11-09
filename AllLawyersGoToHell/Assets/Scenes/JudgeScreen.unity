@@ -2482,6 +2482,8 @@ MonoBehaviour:
   rightSpawn: {fileID: 1735967351}
   goodSquare: {fileID: 7458460532692517565, guid: de305b72a7088be488e2f310de95fcf6, type: 3}
   evilSquare: {fileID: 3898680486222515564, guid: 388a952ed78930747892abd32e77aff0, type: 3}
+  _canvas: {fileID: 1166391358}
+  _continueButton: {fileID: 130056383}
   _rotatingPart: {fileID: 167169937}
   _leftHolder: {fileID: 1517903080}
   _rightHolder: {fileID: 591917113}
