@@ -38,9 +38,13 @@ public class BlockSpawnScript : MonoBehaviour
 	// Sound Tracking
 	[SerializeField] private AudioClip[] _soundLogs;
 
-	private void Start()
+	private Vector3 startTransform;
+
+
+    private void Start()
 	{
-		if (GameManager.Instance.speedMultiplier == 0)
+        startTransform = transform.position;
+        if (GameManager.Instance.speedMultiplier == 0)
 			GameManager.Instance.speedMultiplier = 1;
 
 		boxFallSpeed *= GameManager.Instance.speedMultiplier;
@@ -113,9 +117,8 @@ public class BlockSpawnScript : MonoBehaviour
 	IEnumerator TalkingCo(TestimonyObject blockData) // Make a small talking animation
 	{
 		SpriteRenderer charSprite = GetComponent<SpriteRenderer>();
-		Vector3 startTransform = transform.position;
-
-		int yapAmount = blockData.testimonyText.Length / 5;
+        startTransform = transform.position;
+        int yapAmount = blockData.testimonyText.Length / 5;
 
 		for (int x = 0; x < yapAmount; x++)
 		{
