@@ -202,11 +202,11 @@ public class JudgementSceneScript : MonoBehaviour
 	public void Continue()
 	{
 		if(GameManager.Instance.currentPerson > 1)
-			GameManager.Instance.LoadScene("StartScreen"); // LOAD FINAL WHEN MADE
+			GameManager.Instance.LoadScene("EndScene"); 
 		else
 			GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson + 1);
 	}
-	public void Reset()
+	public void Restart()
 	{
 		GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson);
 	}

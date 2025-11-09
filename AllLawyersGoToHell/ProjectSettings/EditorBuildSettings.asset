@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JudgeScreen.unity
     guid: afde37365f78af24f98010d89053a971
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: b42cdf5a8020369499fa500e016f1328
   m_configObjects: {}
