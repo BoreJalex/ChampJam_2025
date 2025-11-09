@@ -61,12 +61,12 @@ public class GameManager : MonoBehaviour
 	{
         if (_musicSource != null)
         {
-            if (SceneManager.GetActiveScene().name == ("JudgeScreen"))
+            if (SceneManager.GetActiveScene().name == ("JudgeScreen") || SceneManager.GetActiveScene().name == ("EndScene"))
             {
-                _musicSource.volume = .1f;
+                _musicSource.volume = .0f;
             }
             else
-                _musicSource.volume = .4f;
+                _musicSource.volume = .3f;
 		}
         if (musicShouldPlay && _musicSource != null)
         {

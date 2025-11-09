@@ -37,7 +37,6 @@ public class BlockSpawnScript : MonoBehaviour
 
 	// Sound Tracking
 	[SerializeField] private AudioClip[] _soundLogs;
-	private bool soundPlaying = false; 
 
 	private void Start()
 	{
@@ -89,8 +88,8 @@ public class BlockSpawnScript : MonoBehaviour
 		currentTexts++;
 
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
-
-		//GameManager.Instance.PlaySound(_soundLogs[_currentInduvidual]); // PUT THIS BACK WHEN TALKING IMPLIMENTED
+		int choice = Random.Range(GameManager.Instance.currentPerson, GameManager.Instance.currentPerson + 3);
+		GameManager.Instance.PlaySound(_soundLogs[choice]);
 
 		if (resetCo != null)
 			StopCoroutine(resetCo);
@@ -124,6 +123,12 @@ public class BlockSpawnScript : MonoBehaviour
 			transform.position -= new Vector3(0, .1f, 0);
 			yield return new WaitForSeconds(0.1f);
 		}
+	}
+
+	IEnumerator PlayAgain(float time)
+	{
+		yield return new WaitForSeconds(time);
+		GameManager.Instance.PlaySound(_soundLogs[_currentInduvidual]);
 	}
 }
 
