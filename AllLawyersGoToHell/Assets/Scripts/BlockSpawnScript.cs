@@ -90,7 +90,7 @@ public class BlockSpawnScript : MonoBehaviour
 
 		// Talking sounds
 		GameObject block = Instantiate(_blockPrefab, _spawnPoint.position, Quaternion.identity);
-		int choice = Random.Range(GameManager.Instance.currentPerson, GameManager.Instance.currentPerson + 3);
+		int choice = Random.Range(GameManager.Instance.currentPerson * 7, GameManager.Instance.currentPerson + 1 * 7);
 		GameManager.Instance.PlaySound(_soundLogs[choice]);
 
 		if (resetCo != null)
