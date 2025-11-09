@@ -29,6 +29,7 @@ public class PlayerScript : MonoBehaviour
 		else if (currentBox != null)
 			currentIndex = _bScript.blockList.IndexOf(currentBox);
 
+		// Moving selector up
 		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			if ((currentIndex + 1) < _bScript.blockList.Count)
@@ -39,6 +40,7 @@ public class PlayerScript : MonoBehaviour
 				GameManager.Instance.PlaySound(buttonSwap, randomPitch);
 			}
 		}
+		// Moving slector down
 		if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
 			if ((currentIndex - 1) >= 0)
@@ -49,17 +51,21 @@ public class PlayerScript : MonoBehaviour
 				GameManager.Instance.PlaySound(buttonSwap, randomPitch);
 			}
 		}
+		// Stamping
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			if (currentBox.GetComponent<BoxScript>().stamped == true) return;
 
+			// Stamping
 			currentBox.GetComponent<BoxScript>().stamped = true;
 			currentBox.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 3;
 
+			// Jack's sprite
 			GetComponent<SpriteRenderer>().sprite = approveSprite;
             transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             transform.position = new Vector3(-4.07f, -2.32f, 0);
 
+			// Stamp sound
 			float randomPitch = UnityEngine.Random.Range(.8f, 1.2f);
 			GameManager.Instance.PlaySound(stamp, randomPitch);
 
@@ -68,7 +74,7 @@ public class PlayerScript : MonoBehaviour
 			Coroutine reset = StartCoroutine(ResetSprite());
 			resetCo = reset;
 		}
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow)) // Chucking texts
 		{
 			if (currentIndex != -1 && _bScript.blockList.Count > 0 && currentBox != null)
 			{

@@ -67,28 +67,19 @@ public class GameManager : MonoBehaviour
             }
             else
                 _musicSource.volume = .3f;
-		}
-        if (musicShouldPlay && _musicSource != null)
-        {
-            if (SceneManager.GetActiveScene().name == ("JudgeScreen"))
+            if (musicShouldPlay)
             {
-                _musicSource.volume = .1f;
-                musicShouldPlay = false;
-            }
-            else
-            {
-				_musicSource.volume = .4f;
-			}
-			if (_musicPlaying == false)
-            {
-                _musicSource.PlayOneShot(music, 1);
-				musicShouldPlay = false;
-				_musicPlaying = true;
-            }
-            if (!_musicSource.isPlaying && music == true)
-            {
-                musicShouldPlay = true; 
-                _musicPlaying = false;
+                if (_musicPlaying == false)
+                {
+                    _musicSource.PlayOneShot(music, 1);
+                    musicShouldPlay = false;
+                    _musicPlaying = true;
+                }
+                if (!_musicSource.isPlaying)
+                {
+                    musicShouldPlay = true;
+                    _musicPlaying = false;
+                }
             }
         }
 	}

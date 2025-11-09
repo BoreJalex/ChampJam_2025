@@ -56,7 +56,7 @@ public class JudgementSceneScript : MonoBehaviour
 
 		yield return new WaitForSeconds(2);
 
-		while (!_decided)
+		while (!_decided) // Talking during the deciding portion
 		{
 			choice = Random.Range(0, 5);
 			float randomPitch = UnityEngine.Random.Range(.8f, 1.2f);
@@ -72,7 +72,7 @@ public class JudgementSceneScript : MonoBehaviour
 		}
 	}
 
-	IEnumerator spawnDeeds()
+	IEnumerator spawnDeeds() // Spawning the orbs for good and evil
 	{
 		Vector3 randomLeft;
 		Vector3 randomRight;
@@ -84,11 +84,11 @@ public class JudgementSceneScript : MonoBehaviour
 		while (GameManager.Instance.answerOutcomes.Count > _thingsSpawned)
 		{
 			randomLeft = new Vector3(leftSpawn.position.x + Random.Range(-.4f, .4f), leftSpawn.position.y, 1);
-			randomRight = new Vector3(rightSpawn.position.x + Random.Range(-.4f, .4f), leftSpawn.position.y, 1); ;
+			randomRight = new Vector3(rightSpawn.position.x + Random.Range(-.4f, .4f), leftSpawn.position.y, 1); 
 
 			switch (GameManager.Instance.answerOutcomes[_thingsSpawned])
 			{
-				case -40:
+				case -40: 
 					GameObject VeryEvil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					VeryEvil.transform.localScale *= 2;
 					VeryEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
@@ -128,7 +128,7 @@ public class JudgementSceneScript : MonoBehaviour
 
 		yield return new WaitForSeconds(2);
 
-		if (GameManager.Instance.currentPoints > 0)
+		if (GameManager.Instance.currentPoints > 0) // If you win, therefore do things to the scale
 		{
 			Vector3 newRotate = new Vector3(0, 0, 30);
 			_rotatingPart.transform.DORotate(newRotate, 1.5f, RotateMode.Fast);
@@ -137,7 +137,7 @@ public class JudgementSceneScript : MonoBehaviour
 			Vector3 newUpPosition = _rightHolder.transform.position + new Vector3(-.34f, 1.15f, 0f);
 			_rightHolder.transform.DOMove(newUpPosition, 1.5f);
 		}
-		else
+		else // If you lose, therefore do things to the scale
 		{
 			Vector3 newRotate = new Vector3(0, 0, -30);
 			_rotatingPart.transform.DORotate(newRotate, 1.5f, RotateMode.Fast);
@@ -151,7 +151,7 @@ public class JudgementSceneScript : MonoBehaviour
 
 		yield return new WaitForSeconds(1);
 
-		if (GameManager.Instance.currentPoints > 0)
+		if (GameManager.Instance.currentPoints > 0) // Win sounds, and visual
 		{
 			GameManager.Instance.PlaySound(sentenceToHeaven);
 			yield return new WaitForSeconds(3.25f);
@@ -159,7 +159,7 @@ public class JudgementSceneScript : MonoBehaviour
 			_theCircle.GetComponent<SpriteRenderer>().sprite = circleSprites[0];
 			GameManager.Instance.PlaySound(trumpet);
 		}
-		else
+		else // Loss sounds and visuals
 		{
 			_continueButton.interactable = false;
 			_continueButton.transform.GetChild(1).gameObject.SetActive(true);
@@ -192,7 +192,7 @@ public class JudgementSceneScript : MonoBehaviour
 		GameManager.Instance.currentPoints = 0;
 		GameManager.Instance.answerOutcomes.Clear();
 
-		_canvas.SetActive(true);
+		_canvas.SetActive(true); // Ending menu
 	}
 
 	public void toMenu()
@@ -202,11 +202,11 @@ public class JudgementSceneScript : MonoBehaviour
 	public void Continue()
 	{
 		if(GameManager.Instance.currentPerson > 1)
-			GameManager.Instance.LoadScene("StartScreen"); // LOAD FINAL WHEN MADE
+			GameManager.Instance.LoadScene("EndScene"); 
 		else
 			GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson + 1);
 	}
-	public void Reset()
+	public void Restart()
 	{
 		GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson);
 	}
