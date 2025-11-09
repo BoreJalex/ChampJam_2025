@@ -60,16 +60,29 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
+        if (_musicSource != null)
+        {
+            if (SceneManager.GetActiveScene().name == ("JudgeScreen"))
+            {
+                _musicSource.volume = .1f;
+            }
+            else
+                _musicSource.volume = .4f;
+		}
         if (musicShouldPlay && _musicSource != null)
         {
             if (SceneManager.GetActiveScene().name == ("JudgeScreen"))
             {
-                _musicSource.Stop();
+                _musicSource.volume = .1f;
                 musicShouldPlay = false;
             }
-            if (_musicPlaying == false)
+            else
             {
-                _musicSource.PlayOneShot(music, .5f * volumeLevel);
+				_musicSource.volume = .4f;
+			}
+			if (_musicPlaying == false)
+            {
+                _musicSource.PlayOneShot(music, 1);
 				musicShouldPlay = false;
 				_musicPlaying = true;
             }

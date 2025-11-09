@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class JudgementSceneScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class JudgementSceneScript : MonoBehaviour
 	// Objects
 	[SerializeField] private GameObject goodSquare;
 	[SerializeField] private GameObject evilSquare;
+	[SerializeField] private GameObject _canvas;
+	[SerializeField] private Button _continueButton;
 
 	// The Scale
 	[SerializeField] private GameObject _rotatingPart;
@@ -20,7 +23,7 @@ public class JudgementSceneScript : MonoBehaviour
 	[SerializeField] private GameObject _rightHolder;
 
 	// Data
-	private bool _decided = false; 
+	private bool _decided = false;
 	private int _thingsSpawned = 0;
 
 	// Sounds
@@ -29,11 +32,11 @@ public class JudgementSceneScript : MonoBehaviour
 	[SerializeField] private AudioClip trumpet;
 	[SerializeField] private AudioClip sentenceToHeaven;
 	[SerializeField] private AudioClip sentenceToHell;
-    [SerializeField] private AudioClip fireEruption;
+	[SerializeField] private AudioClip fireEruption;
 
-    // Sprites
-    [SerializeField] private GameObject _theJudged;
-	[SerializeField] private GameObject _theCircle; 
+	// Sprites
+	[SerializeField] private GameObject _theJudged;
+	[SerializeField] private GameObject _theCircle;
 	[SerializeField] private Sprite[] possibleSprites;
 	[SerializeField] private Sprite[] circleSprites;
 	[SerializeField] private Sprite[] soulWeightSprites;
@@ -88,17 +91,17 @@ public class JudgementSceneScript : MonoBehaviour
 				case -40:
 					GameObject VeryEvil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					VeryEvil.transform.localScale *= 2;
-                    VeryEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
-                    break;
+					VeryEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					break;
 				case -20:
 					GameObject QuiteEvil = Instantiate(evilSquare, randomRight, Quaternion.identity);
 					QuiteEvil.transform.localScale *= 1.5f;
-                    QuiteEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
-                    break;
+					QuiteEvil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					break;
 				case -10:
 					GameObject Evil = Instantiate(evilSquare, randomRight, Quaternion.identity);
-                    Evil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
-                    break;
+					Evil.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					break;
 				case 5:
 					GameObject Good = Instantiate(goodSquare, randomLeft, Quaternion.identity);
 					Good.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
@@ -106,17 +109,17 @@ public class JudgementSceneScript : MonoBehaviour
 				case 10:
 					GameObject Great = Instantiate(goodSquare, randomLeft, Quaternion.identity);
 					Great.transform.localScale *= 1.5f;
-                    Great.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
-                    break;
+					Great.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					break;
 				case 50:
 					GameObject ShouldBeGood = Instantiate(goodSquare, randomRight, Quaternion.identity);
-                    ShouldBeGood.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
-                    break;
+					ShouldBeGood.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					break;
 				case 100:
 					GameObject ShouldBeGreat = Instantiate(goodSquare, randomRight, Quaternion.identity);
 					ShouldBeGreat.transform.localScale *= 1.5f;
-                    ShouldBeGreat.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
-                    break;
+					ShouldBeGreat.GetComponent<SpriteRenderer>().sprite = soulWeightSprites[Random.Range(0, 1)];
+					break;
 			}
 
 			_thingsSpawned++;
@@ -144,7 +147,7 @@ public class JudgementSceneScript : MonoBehaviour
 			_rightHolder.transform.DOMove(newUpPosition, 1.5f);
 		}
 
-		_decided = true; 
+		_decided = true;
 
 		yield return new WaitForSeconds(1);
 
@@ -158,6 +161,9 @@ public class JudgementSceneScript : MonoBehaviour
 		}
 		else
 		{
+			_continueButton.interactable = false;
+			_continueButton.transform.GetChild(1).gameObject.SetActive(true);
+
 			GameManager.Instance.PlaySound(sentenceToHell);
 			yield return new WaitForSeconds(3.25f);
 			_theJudged.GetComponent<SpriteRenderer>().sprite = possibleSprites[0];
@@ -166,19 +172,19 @@ public class JudgementSceneScript : MonoBehaviour
 			GameManager.Instance.PlaySound(fireEruption);
 			switch (GameManager.Instance.currentPerson)
 			{
-                case 0:
+				case 0:
 					GameManager.Instance.PlaySound(victimScream[0]);
-                    break;
-                case 1:
-                    GameManager.Instance.PlaySound(victimScream[1]);
-                    break;
-                case 2:
-                    GameManager.Instance.PlaySound(victimScream[2]);
-                    break;
+					break;
+				case 1:
+					GameManager.Instance.PlaySound(victimScream[1]);
+					break;
+				case 2:
+					GameManager.Instance.PlaySound(victimScream[2]);
+					break;
 				default:
-                    break;
-            }
-        }
+					break;
+			}
+		}
 
 		yield return new WaitForSeconds(3);
 
@@ -186,10 +192,23 @@ public class JudgementSceneScript : MonoBehaviour
 		GameManager.Instance.currentPoints = 0;
 		GameManager.Instance.answerOutcomes.Clear();
 
-		// Loading next scene
-		if (GameManager.Instance.currentPerson <= 1)
-			GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson + 1);
-		else
-			GameManager.Instance.LoadScene("StartScreen");
+		_canvas.SetActive(true);
 	}
+
+	public void toMenu()
+	{
+		GameManager.Instance.LoadScene("StartScreen");
+	}
+	public void Continue()
+	{
+		if(GameManager.Instance.currentPerson > 1)
+			GameManager.Instance.LoadScene("StartScreen"); // LOAD FINAL WHEN MADE
+		else
+			GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson + 1);
+	}
+	public void Reset()
+	{
+		GameManager.Instance.LoadPlayScene(GameManager.Instance.currentPerson);
+	}
+
 }

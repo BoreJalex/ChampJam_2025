@@ -38,7 +38,7 @@ public class TutorialBoxScript : MonoBehaviour
     {
         if (stamped)
         {
-            transform.position = transform.position - new Vector3(0, 6, 0) * Time.deltaTime;
+            transform.position = transform.position - new Vector3(0, 12, 0) * Time.deltaTime;
         }
 
         if (transform.position.y <= -6.0f)
